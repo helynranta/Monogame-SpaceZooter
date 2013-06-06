@@ -13,6 +13,8 @@ using System.ServiceModel.Dispatcher;
 using System.ServiceModel;
 
 using SpaceShooter;
+
+//Test comment
 namespace SpaceShooter
 {
     public class Game1 : Game
@@ -35,6 +37,7 @@ namespace SpaceShooter
         //find mouse cordinates in world
         private Vector3 mouseInWorld = new Vector3();
         public Vector2 mousePosition;
+        public Boolean testbool;
         #endregion
         public Game1()
         {
