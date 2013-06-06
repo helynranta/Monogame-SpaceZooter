@@ -162,8 +162,8 @@ namespace SpaceShooter
                 else
                 {
                    //check for joystick touch
-                    if (Math.Abs(mousePosition.X - joystick.position.X) <= 20
-                        && Math.Abs(mousePosition.Y - joystick.position.Y) <= 20)
+                    if (Math.Abs(mousePosition.X - joystick.position.X) <= 30
+                        && Math.Abs(mousePosition.Y - joystick.position.Y) <= 30)
                     {
                         if (touch.Id != player.touchID)
                         {
@@ -187,7 +187,7 @@ namespace SpaceShooter
             _spriteBatch.DrawString(font, "mouse pos " + mousePosition, new Vector2(50, 25), Color.Black);
             _spriteBatch.DrawString(font, "mouse in world: " + mouseInWorld, new Vector2(50,50), Color.Black);
             _spriteBatch.DrawString(font, "player pos " + player.position, new Vector2(50, 75), Color.Black);
-            //_spriteBatch.DrawString(font, "joystick" + Vector2.Subtract(joystick.anchorPos, joystick.position).Length(), new Vector2(50, 100), Color.Black);
+            _spriteBatch.DrawString(font, "joystick" + Vector2.Subtract(joystick.anchorPos, joystick.position).Length(), new Vector2(50, 100), Color.Black);
             _spriteBatch.DrawString(font, "joystick anchor" + joystick.anchorPos, new Vector2(50, 125), Color.Black);
             _spriteBatch.DrawString(font, "joystic pos" + joystick.position, new Vector2(50, 150), Color.Black);
             
@@ -195,7 +195,6 @@ namespace SpaceShooter
             joystick.Draw(_spriteBatch);
             player.Draw(_spriteBatch, font);
             base.Draw(gameTime);
- 
         }
        
     }

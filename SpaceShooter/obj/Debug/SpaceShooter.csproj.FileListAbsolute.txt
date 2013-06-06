@@ -31,3 +31,35 @@ C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShoote
 C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\obj\Debug\pri.resfiles
 C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\obj\Debug\LanguageQualifiers.txt
 C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\obj\Debug\ProjectArchitectures.txt
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.exe
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.pdb
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\resources.pri
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\AppxManifest.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.build.appxrecipe
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\MonoGame.Framework.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.Direct2D1.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.Direct3D11.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.DXGI.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.MediaFoundation.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.XAudio2.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.XInput.dll
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.XInput.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.Direct2D1.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.Direct3D11.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.DXGI.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.MediaFoundation.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SharpDX.XAudio2.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SpaceShooter.csprojResolveAssemblyReference.cache
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SpaceShooter.exe
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SpaceShooter.pdb
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SpaceShooter.csproj.GenerateResource.Cache
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SharpDX.pri
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SharpDX\LanguageQualifiers.txt
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\priconfig.xml
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\layout.resfiles
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\resources.resfiles
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\pri.resfiles
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\LanguageQualifiers.txt
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\ProjectArchitectures.txt

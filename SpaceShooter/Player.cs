@@ -45,7 +45,6 @@ namespace SpaceShooter
         public void Draw(SpriteBatch _spriteBatch, SpriteFont font)
         {
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(font, "joystick" + Vector2.Subtract(joystick.anchorPos, joystick.position).Length(), new Vector2(50, 100), Color.Black);
             _spriteBatch.End();
             DrawModel(texture);
         }

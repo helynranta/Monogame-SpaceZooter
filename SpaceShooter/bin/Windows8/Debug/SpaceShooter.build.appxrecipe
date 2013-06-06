@@ -7,16 +7,16 @@
     <PackageArchitecture>neutral</PackageArchitecture>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.exe">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.exe">
       <PackagePath>SpaceShooter.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.pdb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.pdb">
       <PackagePath>SpaceShooter.pdb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.dll">
@@ -64,38 +64,38 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.XAudio2.xml">
       <PackagePath>SharpDX.XAudio2.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\spaceship.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship.xnb">
       <PackagePath>Content\spaceship.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\spaceship_uv.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_uv.xnb">
       <PackagePath>Content\spaceship_uv.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\font.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\font.xnb">
       <PackagePath>Content\font.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\joystick.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick.xnb">
       <PackagePath>Content\joystick.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\joystick_background.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick_background.xnb">
       <PackagePath>Content\joystick_background.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\Logo.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\SmallLogo.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SmallLogo.png">
       <PackagePath>Assets\SmallLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\SplashScreen.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

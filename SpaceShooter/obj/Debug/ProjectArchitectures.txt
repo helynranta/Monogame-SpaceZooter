@@ -1,1 +1,1 @@
-C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\SpaceShooter.csproj;neutral
+C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\SpaceShooter.csproj;neutral
