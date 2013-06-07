@@ -28,12 +28,6 @@ namespace SpaceShooter
         {
             SCREEN_HEIGHT = sh;
             SCREEN_WIDTH = sw;
-            anchorPos = new Vector2(SCREEN_WIDTH - 200, SCREEN_HEIGHT - 200);
-            normaali = Vector2.Normalize(Vector2.Subtract(anchorPos,mousePosition));
-            if (anchorPos != position)
-                dir = Vector2.Normalize(Vector2.Subtract(anchorPos, position));
-            else
-                dir = Vector2.Zero;
 
         }
         public void Draw(SpriteBatch _spriteBatch)

@@ -37,7 +37,6 @@ namespace SpaceShooter
         //find mouse cordinates in world
         private Vector3 mouseInWorld = new Vector3();
         public Vector2 mousePosition;
-        public Boolean testbool;
         #endregion
         public Game1()
         {
@@ -47,6 +46,7 @@ namespace SpaceShooter
 
         protected override void Initialize()
         {
+            base.Initialize();
             _viewport = _graphics.GraphicsDevice.Viewport;
             SCREEN_HEIGHT = _viewport.Height;
             SCREEN_WIDTH = _viewport.Width;
@@ -62,7 +62,7 @@ namespace SpaceShooter
                 GestureType.Pinch;
 
             joystick.Initialize(SCREEN_HEIGHT, SCREEN_WIDTH);
-            base.Initialize();
+            
         }
 
         protected override void LoadContent()
@@ -114,66 +114,80 @@ namespace SpaceShooter
                 Vector3 pos2 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 0), projection, view, world);
                 mouseInWorld = 1000*(pos2 - pos1);
                 mouseInWorld.Z = 0;
-                #region player touches
-                if (player.isPressed)
+
+                #region joystick touches
+                joystick.anchorPos = new Vector2(SCREEN_WIDTH - 200, SCREEN_HEIGHT - 200);
+                joystick.normaali = Vector2.Normalize(Vector2.Subtract(joystick.anchorPos, touch.Position));
+                if (joystick.anchorPos != joystick.position)
+                    joystick.dir = Vector2.Normalize(Vector2.Subtract(joystick.anchorPos, joystick.position));
+                else
+                    joystick.dir = Vector2.Zero;
+                if (joystick.isPressed)
                 {
-                    if (touch.Id == player.touchID && touch.State == TouchLocationState.Moved)
+                    if (touch.Id == joystick.touchID && touch.Id != player.touchID)
                     {
-                        //player.position = mouseInWorld;
+                        if (touch.State == TouchLocationState.Moved)
+                        {
+                            //handle joystick position
+                            if ((float)Vector2.Subtract(mousePosition, joystick.anchorPos).Length() < 100f)
+                                joystick.position = touch.Position;
+                            else
+                            {
+                                joystick.position = Vector2.Add(joystick.anchorPos, joystick.normaali * -100f);
+                            }
+                        }
+                        else
+                        {
+                            if (touch.State != TouchLocationState.Moved)
+                            {
+                                joystick.isPressed = false;
+                                joystick.position = joystick.anchorPos;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //check for joystick touch
+                    if (Math.Abs(mousePosition.X - joystick.position.X) <= 30
+                        && Math.Abs(mousePosition.Y - joystick.position.Y) <= 30)
+                    {
+                        joystick.isPressed = true;
+                        joystick.touchID = touch.Id;
+
                     }
                     else
                     {
-                        player.isPressed = false;
+                        joystick.position = joystick.anchorPos;
+                    }
+                }
+                #endregion
+                #region player touches
+                if (player.isPressed)
+                {
+                    if (touch.Id != joystick.touchID)
+                    {
+                        if (touch.Id == player.touchID && touch.State == TouchLocationState.Moved)
+                        {
+                            player.aimSpot = mouseInWorld;
+                        }
+                        else
+                        {
+                            if (touch.State != TouchLocationState.Moved)
+                            {
+                                player.isPressed = false;
+                            }
+
+                        }
                     }
                 }
                 else
                 {
                     //check for player touch
-                    if (Math.Abs(mouseInWorld.X - player.position.X) <= 2
-                        && Math.Abs(mouseInWorld.Y - player.position.Y) <= 2)
+                    if (touch.Id != joystick.touchID)
                     {
-                        if (touch.Id != joystick.touchID)
-                        {
-                            player.isPressed = true;
-                            player.touchID = touch.Id;
-                        }
-                    }
-                }
-                #endregion
-                #region joystick touches
-                if (joystick.isPressed)
-                {
-                    if (touch.Id == joystick.touchID && touch.State == TouchLocationState.Moved)
-                    {
-                        //handle joystick position
-                        if ((float)Vector2.Subtract(mousePosition, joystick.anchorPos).Length() < 100f)
-                            joystick.position = mousePosition;
-                        else
-                        {
-                            joystick.position = Vector2.Add(joystick.anchorPos, joystick.normaali * -100f);
-                        }
-                    }
-                    else
-                    {
-                        joystick.isPressed = false;
-                        joystick.position = joystick.anchorPos;
-                    }
-                }
-                else
-                {
-                   //check for joystick touch
-                    if (Math.Abs(mousePosition.X - joystick.position.X) <= 30
-                        && Math.Abs(mousePosition.Y - joystick.position.Y) <= 30)
-                    {
-                        if (touch.Id != player.touchID)
-                        {
-                            joystick.isPressed = true;
-                            joystick.touchID = touch.Id;
-                        }
-                    }
-                    else
-                    {
-                        joystick.position = joystick.anchorPos;
+                        player.isPressed = true;
+                        player.touchID = touch.Id;
                     }
                 }
                 #endregion
