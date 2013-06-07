@@ -11,8 +11,8 @@ using Windows.Devices.Input;
 using Windows.UI.Xaml;
 using System.ServiceModel.Dispatcher;
 using System.ServiceModel;
-
 using SpaceShooter;
+
 
 //Test comment
 namespace SpaceShooter
@@ -72,6 +72,9 @@ namespace SpaceShooter
             player.texture = Content.Load<Texture2D>("spaceship_uv");
             font = Content.Load<SpriteFont>("font");
             joystick.jsTexture = Content.Load<Texture2D>("joystick");
+            //Lets create space
+            //Box playerPhysicsBody = new Box(Vector3.Zero, 30f,1f,30f);
+            //space.Add(playerPhysicsBody);
         }
 
         protected override void UnloadContent()
@@ -85,6 +88,7 @@ namespace SpaceShooter
             {
                 Exit();
             }
+            base.Update(gameTime);
             //err... handle touch input?
             HandleInput();
             //get screen width and height
@@ -95,8 +99,6 @@ namespace SpaceShooter
             player.position.Y += joystick.dir.Y*player.speed;
             player.Update(SCREEN_WIDTH, SCREEN_HEIGHT, world, view, projection, mouseInWorld, joystick);
             joystick.Update(SCREEN_HEIGHT, SCREEN_WIDTH, mousePosition);
-            
-            base.Update(gameTime);
 
         }
 

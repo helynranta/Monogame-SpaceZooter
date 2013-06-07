@@ -9,4 +9,12 @@
     <RemoteDebugEnabled>true</RemoteDebugEnabled>
     <UseSimulator>False</UseSimulator>
   </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\BepoPhysics\lib\Windows Phone\Release\</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <RemoteDebugMachine>157.24.106.180</RemoteDebugMachine>
+    <UseAuthentication>True</UseAuthentication>
+    <RemoteDebugEnabled>true</RemoteDebugEnabled>
+  </PropertyGroup>
 </Project>
