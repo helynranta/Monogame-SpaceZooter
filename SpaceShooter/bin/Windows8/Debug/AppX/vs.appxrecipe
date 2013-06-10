@@ -5,7 +5,7 @@
     <WindowsUser>codecamp</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <RegisteredManifestChecksum>B01E73DBDFEB74DB88F31CD107FA98C7BC507A0362999F18A2498138D1C41934</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>DB4514E1B49C6C9CECC03CABC0A1768F74B5062C678A5D14CCAB76BFDD377B8C</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>85b18687-33e7-435d-91e2-77039b764577_1.0.0.0_neutral__qj5ja5pefmqbr</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>85b18687-33e7-435d-91e2-77039b764577_qj5ja5pefmqbr!App</RegisteredUserModeAppID>
     <RegisteredPackageID>85b18687-33e7-435d-91e2-77039b764577</RegisteredPackageID>
@@ -13,20 +13,20 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-06-06T09:38:43.977</Modified>
+      <Modified>2013-06-10T06:11:59.010</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.exe">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.exe">
       <PackagePath>SpaceShooter.exe</PackagePath>
-      <Modified>2013-06-06T09:40:32.852</Modified>
+      <Modified>2013-06-10T06:11:58.882</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.pdb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.pdb">
       <PackagePath>SpaceShooter.pdb</PackagePath>
-      <Modified>2013-06-06T09:40:32.831</Modified>
+      <Modified>2013-06-10T06:11:58.862</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -88,49 +88,49 @@
       <PackagePath>SharpDX.XAudio2.xml</PackagePath>
       <Modified>2012-12-28T16:17:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\spaceship.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship.xnb">
       <PackagePath>Content\spaceship.xnb</PackagePath>
       <Modified>2013-06-04T07:32:58.783</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\spaceship_uv.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_uv.xnb">
       <PackagePath>Content\spaceship_uv.xnb</PackagePath>
       <Modified>2013-06-04T07:32:58.758</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\font.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\font.xnb">
       <PackagePath>Content\font.xnb</PackagePath>
       <Modified>2013-06-04T09:58:07.679</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\joystick.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick.xnb">
       <PackagePath>Content\joystick.xnb</PackagePath>
       <Modified>2013-06-06T05:45:29.530</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Content\joystick_background.xnb">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick_background.xnb">
       <PackagePath>Content\joystick_background.xnb</PackagePath>
       <Modified>2013-06-06T05:45:29.532</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\Logo.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-01-06T11:37:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\SmallLogo.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SmallLogo.png">
       <PackagePath>Assets\SmallLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-01-06T11:37:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\SplashScreen.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-01-06T11:37:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-01-06T11:37:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\documents\visual studio 2012\Projects\SpaceShooter\SpaceShooter\bin\Windows8\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-06-06T07:47:16.133</Modified>
+      <Modified>2013-06-07T12:28:56.251</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

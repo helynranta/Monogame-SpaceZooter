@@ -55,14 +55,8 @@ C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\S
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SpaceShooter.pdb
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SharpDX\en-us\SharpDX.Properties.Resources.resw
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SpaceShooter.csproj.GenerateResource.Cache
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SharpDX\priconfig.xml.intermediate
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SharpDX\Resources.resfiles.intermediate
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SharpDX.pri
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SharpDX\LanguageQualifiers.txt
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\priconfig.xml.intermediate
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\layout.resfiles.intermediate
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\resources.resfiles.intermediate
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\pri.resfiles.intermediate
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\priconfig.xml
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\layout.resfiles
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\resources.resfiles

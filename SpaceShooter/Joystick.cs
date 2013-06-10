@@ -8,12 +8,13 @@ using SpaceShooter;
 
 namespace SpaceShooter
 {
-    class Joystick
+    //JOYSTICK
+    public class Joystick
     {
         public Texture2D jsTexture;
         public Vector2 anchorPos;
         public Vector2 position;
-        public Vector2 normaali;
+        public Vector2 normal;
         public Vector2 dir;
         public int touchID;
         public Boolean isPressed = false;
@@ -24,12 +25,7 @@ namespace SpaceShooter
         {
             position = new Vector2(sw - 200, sh - 200);
         }
-        public void Update(float sh, float sw, Vector2 mousePosition)
-        {
-            SCREEN_HEIGHT = sh;
-            SCREEN_WIDTH = sw;
-
-        }
+        //draw it... -.-
         public void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Begin();
