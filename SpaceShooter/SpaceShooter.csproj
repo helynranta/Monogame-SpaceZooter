@@ -144,6 +144,11 @@
     <Content Include="Content\font.xnb" />
     <Content Include="Content\joystick.xnb" />
     <Content Include="Content\joystick_background.xnb" />
+    <Content Include="Content\lazeh_uv.xnb" />
+    <Content Include="Content\lazeh.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\lazeh_uv_0.xnb" />
     <None Include="SpaceShooter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -152,10 +157,7 @@
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\models\" />
-    <Folder Include="Content\textures\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>

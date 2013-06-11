@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Input;
 namespace SpaceShooter
 {
-    class Player : Game
+    public class Player : Game
     {
         //---------------variables and shitah----------------------//
         #region variables
@@ -24,13 +24,14 @@ namespace SpaceShooter
         public Boolean isPressed = false; //check if player is pressing touchscreen, used in shooting and rotation
         public int touchID = -1; //ID for witch touch is used in player actions
         public float speed = 1f; //player speed
-        public float turnSpeed = 0.75f; //speed in witch player can turn
+        public float turnSpeed = 0.2f; //speed in witch player can turn
         float angle = 0.0f; //players current angle
         public BoundingBox physicsBody, randomCube; //bounding box variables for player and dummy
         protected Vector3 cubePos = new Vector3(0,20,0); //dummy box position //TESTS
         public int intersect; //turn 0 - 1 if dummy and player are touching. why is this not boolean...
         public double lastShot; //time after last time player shot
-        private List<Bullet> bulletArray; //array for all bullet projectiles
+        public List<Bullet> bulletArray = new List<Bullet>(); //array for all bullet projectiles
+        private int bulletArrayBin = 0;
         #endregion
         //---------------main update for player--------------------//
         public void Update(Game1 g)
@@ -70,15 +71,26 @@ namespace SpaceShooter
         #region shooting and bullets
         public void Shoot()
         {
-            //create new projective of bullet
-            //push it in bullet array
+            Bullet bullet = new Bullet(position, Vector3.Normalize(position - aimSpot));
+            bullet.Initialize(game, RotationMatrix, angle);
+            if(bullet != null)
+                bulletArray.Add(bullet);
         }
         private void updateBullets()
         {
-            //foreach(Bullet bullet in bulletArray)
-            //{
-            //    //somethin awesome here
-            //}
+            if (bulletArray != null)
+            {
+                foreach (Bullet b in bulletArray)
+                {
+                    b.Update();
+                    if (b.shouldDie == true)
+                    {
+                        bulletArray.Remove(b);
+                        break;
+                    }
+                }
+
+            }
         }
         #endregion
         //----calculate the direction of player lookin-------------//
@@ -111,9 +123,12 @@ namespace SpaceShooter
         #region drawing
         public void Draw(SpriteBatch _spriteBatch, SpriteFont font)
         {
-            _spriteBatch.Begin();
-            _spriteBatch.End();
-            DrawModel(texture); 
+            DrawModel(texture);
+            foreach (Bullet b in bulletArray)
+            {
+                if (b != null)
+                    b.Draw();
+            }
         }
         //draw model function
         public void DrawModel(Texture2D texture)
@@ -131,7 +146,6 @@ namespace SpaceShooter
                     effect.View = game.view;
                     effect.Projection = game.projection;
                 }
-
                 mesh.Draw();
             }
         }

@@ -23,8 +23,11 @@ namespace SpaceShooter
         public GraphicsDeviceManager _graphics; //graphics device
         public SpriteBatch _spriteBatch; //variable for spritebatch
         public Viewport _viewport; //variable for viewport
+        private Effect _blurEffect;
         public SpriteFont font; //font for debugging
-        Player player = new Player(); //create a new player
+        public Player player = new Player(); //create a new player
+        public Model bullet = new Model();
+        public Texture2D bulletTexture;
         public Joystick joystick = new Joystick(); //create a joystick to move player
         public Matrix world = Matrix.CreateTranslation(new Vector3(0, 0, 0)); //world cordinates lol
         public Matrix view = Matrix.CreateLookAt(new Vector3(0, 0, 100), new Vector3(0, 0, 0), Vector3.UnitY); //creates look at view for camera
@@ -33,7 +36,7 @@ namespace SpaceShooter
         public float SCREEN_HEIGHT;
         public float SCREEN_WIDTH;
         //find mouse cordinates in world, vectors for left-up and right down corners in world space
-        private Vector3 mouseInWorld, upLeft, downRight;
+        public Vector3 mouseInWorld, upLeft, downRight;
         public Vector2 mousePosition; //vector for mouse position in screen-space
         public double time; //used to estimate time
         #endregion
@@ -63,8 +66,12 @@ namespace SpaceShooter
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             player.model = Content.Load<Model>("spaceship");//Load player model from Content
             player.texture = Content.Load<Texture2D>("spaceship_uv");//load player texture from Content
+            bullet = Content.Load<Model>("lazeh");
+
+            bulletTexture = Content.Load<Texture2D>("lazeh_uv");
             font = Content.Load<SpriteFont>("font"); //load dummy font for debugging
             joystick.jsTexture = Content.Load<Texture2D>("joystick");//load joystick texture from Content
+
         }
 
         protected override void UnloadContent()
@@ -138,7 +145,7 @@ namespace SpaceShooter
                 //check the overlapping touches for player and joystick, joystick always wins
                 if (joystick.touchID == player.touchID)
                 {
-                    player.touchID = -2;
+                    joystick.touchID = -1;
                     player.isPressed = false;
                     joystick.isPressed = false;
                 }
@@ -166,16 +173,19 @@ namespace SpaceShooter
                 //if joystick isn´t already in use...
                 else
                 {
-                    //check if current touch is close enough to joystic, doenst matter if its in use of player
-                    if (Math.Abs(mousePosition.X - joystick.position.X) <= 30
-                        && Math.Abs(mousePosition.Y - joystick.position.Y) <= 30)
+                    if (!joystick.isPressed)
                     {
-                        joystick.isPressed = true;
-                        joystick.touchID = touch.Id; //register this touch for joystick
+                        //check if current touch is close enough to joystic, doenst matter if its in use of player
+                        if (Math.Abs(mousePosition.X - joystick.position.X) <= 30
+                            && Math.Abs(mousePosition.Y - joystick.position.Y) <= 30)
+                        {
+                            joystick.isPressed = true;
+                            joystick.touchID = touch.Id; //register this touch for joystick
+                        }
+                        //otherwise keep the joystick in anchor, if its not there already...
+                        else
+                            joystick.position = joystick.anchorPos;
                     }
-                    //otherwise keep the joystick in anchor, if its not there already...
-                    else
-                        joystick.position = joystick.anchorPos;
                 }
                 #endregion
                 #region player touches
@@ -215,8 +225,9 @@ namespace SpaceShooter
             _spriteBatch.DrawString(font, "border0" + upLeft, new Vector2(50, 175), Color.Black);
             _spriteBatch.DrawString(font, "border1" + downRight, new Vector2(50, 200), Color.Black);
             _spriteBatch.DrawString(font, "intersect Collision " + player.intersect, new Vector2(50, 225), Color.Black);
-            _spriteBatch.DrawString(font, "gametime" + time, new Vector2(50, 250), Color.Black);
-            _spriteBatch.DrawString(font, "lastShot " + player.lastShot, new Vector2(50, 275), Color.Black);
+            if(player.bulletArray.Count >= 1)
+                _spriteBatch.DrawString(font, "joystick touchID " + player.bulletArray[player.bulletArray.Count-1].position, new Vector2(50, 250), Color.Black);
+            _spriteBatch.DrawString(font, "list length " + player.bulletArray.Count, new Vector2(50, 275), Color.Black);
             _spriteBatch.End();
            
             player.Draw(_spriteBatch, font);

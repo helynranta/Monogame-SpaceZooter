@@ -79,6 +79,15 @@
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick_background.xnb">
       <PackagePath>Content\joystick_background.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv.xnb">
+      <PackagePath>Content\lazeh_uv.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh.xnb">
+      <PackagePath>Content\lazeh.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv_0.xnb">
+      <PackagePath>Content\lazeh_uv_0.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
