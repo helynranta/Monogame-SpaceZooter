@@ -18,7 +18,6 @@ namespace SpaceShooter
         public Vector2 dir;
         public int touchID;
         public Boolean isPressed = false;
-        float SCREEN_WIDTH, SCREEN_HEIGHT;
 
 
         public void Initialize(float sh, float sw)

@@ -13,7 +13,7 @@ using System.ServiceModel.Dispatcher;
 using System.ServiceModel;
 using SpaceShooter;
 
-
+//wednesday?
 //Test comment
 namespace SpaceShooter
 {
@@ -24,10 +24,14 @@ namespace SpaceShooter
         public SpriteBatch _spriteBatch; //variable for spritebatch
         public Viewport _viewport; //variable for viewport
         private Effect _blurEffect;
+        public Random random = new Random();
         public SpriteFont font; //font for debugging
         public Player player = new Player(); //create a new player
         public Model bullet = new Model();
+        public PhysicsHelper physicsHelper = new PhysicsHelper();
         public Texture2D bulletTexture;
+        public Enemy enemy;
+        public List<Enemy> enemyList = new List<Enemy>();
         public Joystick joystick = new Joystick(); //create a joystick to move player
         public Matrix world = Matrix.CreateTranslation(new Vector3(0, 0, 0)); //world cordinates lol
         public Matrix view = Matrix.CreateLookAt(new Vector3(0, 0, 100), new Vector3(0, 0, 0), Vector3.UnitY); //creates look at view for camera
@@ -39,6 +43,7 @@ namespace SpaceShooter
         public Vector3 mouseInWorld, upLeft, downRight;
         public Vector2 mousePosition; //vector for mouse position in screen-space
         public double time; //used to estimate time
+        public int enemyCount = 0;
         #endregion
 
         public Game1()
@@ -57,6 +62,7 @@ namespace SpaceShooter
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), SCREEN_WIDTH / SCREEN_HEIGHT, 0.1f, 1000f);
             IsMouseVisible = true; // show mouse
             joystick.Initialize(SCREEN_HEIGHT, SCREEN_WIDTH); //initialize joystick to right corner
+            
             base.Initialize(); //init base of monogame
             
         }
@@ -71,7 +77,6 @@ namespace SpaceShooter
             bulletTexture = Content.Load<Texture2D>("lazeh_uv");
             font = Content.Load<SpriteFont>("font"); //load dummy font for debugging
             joystick.jsTexture = Content.Load<Texture2D>("joystick");//load joystick texture from Content
-
         }
 
         protected override void UnloadContent()
@@ -109,7 +114,16 @@ namespace SpaceShooter
             player.position.X = MathHelper.Clamp(player.position.X, upLeft.X,downRight.X);
             player.position.Y = MathHelper.Clamp(player.position.Y, downRight.Y, upLeft.Y);
             player.Update(this);//position is not done, update it...
-
+            if (enemyList.Count < 100)
+            {
+                Enemy enemy = new Enemy(this);
+                enemyList.Add(enemy);
+                enemyCount++;
+            }
+            foreach (Enemy e in enemyList)
+            {
+                e.Update();
+            }
             base.Update(gameTime);
         }
         //-----------------------------------------//
@@ -224,16 +238,45 @@ namespace SpaceShooter
             _spriteBatch.DrawString(font, "joystic pos" + joystick.position, new Vector2(50, 150), Color.Black);
             _spriteBatch.DrawString(font, "border0" + upLeft, new Vector2(50, 175), Color.Black);
             _spriteBatch.DrawString(font, "border1" + downRight, new Vector2(50, 200), Color.Black);
-            _spriteBatch.DrawString(font, "intersect Collision " + player.intersect, new Vector2(50, 225), Color.Black);
             if(player.bulletArray.Count >= 1)
-                _spriteBatch.DrawString(font, "joystick touchID " + player.bulletArray[player.bulletArray.Count-1].position, new Vector2(50, 250), Color.Black);
-            _spriteBatch.DrawString(font, "list length " + player.bulletArray.Count, new Vector2(50, 275), Color.Black);
+                _spriteBatch.DrawString(font, "last Bullet position " + player.bulletArray[player.bulletArray.Count-1].position, new Vector2(50, 225), Color.Black);
+            _spriteBatch.DrawString(font, "angle " + player.angle, new Vector2(50, 250), Color.Black);
+            _spriteBatch.DrawString(font, "enemy pos" + enemyList[0].position, new Vector2(50, 275), Color.Black);
             _spriteBatch.End();
-           
+            foreach (Enemy e in enemyList)
+            {
+                e.Draw();
+            }
+            base.Update(gameTime);
             player.Draw(_spriteBatch, font);
             joystick.Draw(_spriteBatch);
             base.Draw(gameTime);
         }
-       
+        //----calculate the direction of player lookin-------------//
+        #region calculations
+        public float LookAt(Vector3 position, Vector3 aimSpot, float currentAngle, float turnSpeed)
+        {
+            float x = aimSpot.X - position.X;
+            float y = aimSpot.Y - position.Y;
+            float desiredAngle = (float)Math.Atan2(y, x);
+            float difference = WrapAngle(desiredAngle - currentAngle);
+            difference = MathHelper.Clamp(difference, -turnSpeed, turnSpeed);
+            return WrapAngle(currentAngle + difference);
+
+        }
+
+        private static float WrapAngle(float radians)
+        {
+            while (radians < -MathHelper.Pi)
+            {
+                radians += MathHelper.TwoPi;
+            }
+            while (radians > MathHelper.Pi)
+            {
+                radians -= MathHelper.TwoPi;
+            }
+            return radians;
+        }
+        #endregion
     }
 }

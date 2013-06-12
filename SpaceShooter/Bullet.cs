@@ -15,7 +15,6 @@ namespace SpaceShooter
         private Game1 game;
         private Model model;
         private Texture2D texture;
-        private Matrix RotationMatrix;
         private float angle;
         public Vector3 position;
         public Vector3 flyDir;
@@ -27,12 +26,11 @@ namespace SpaceShooter
             this.position = spawnPoint;
             this.flyDir = flyDir;
         }
-        public void Initialize(Game1 g, Matrix rotMatrix, float a)
+        public void Initialize(Game1 g, float a)
         {
             game = g;
             model = game.bullet;
             texture = game.bulletTexture;
-            RotationMatrix = rotMatrix;
             angle = a;
             spawnTime = (float)game.time;
             position -= flyDir * 2;
@@ -58,9 +56,6 @@ namespace SpaceShooter
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    RotationMatrix = RotationMatrix * Matrix.CreateFromAxisAngle(RotationMatrix.Up, MathHelper.ToRadians(1.0f));
-                    Matrix[] absoluteBoneTransform = new Matrix[model.Bones.Count];
-                    model.CopyAbsoluteBoneTransformsTo(absoluteBoneTransform);
                     effect.TextureEnabled = true;
                     effect.Texture = texture;
                     effect.World = Matrix.CreateRotationZ(angle + MathHelper.ToRadians(-90f)) * Matrix.CreateTranslation(position);
