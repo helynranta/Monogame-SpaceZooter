@@ -28,22 +28,22 @@ namespace SpaceShooter
         public SpriteFont font; //font for debugging
         public Player player = new Player(); //create a new player
         public Model bullet = new Model();
-        public PhysicsHelper physicsHelper = new PhysicsHelper();
         public Texture2D bulletTexture;
+        public Texture2D jsTexture;
         public Enemy enemy;
         public List<Enemy> enemyList = new List<Enemy>();
-        public Joystick joystick = new Joystick(); //create a joystick to move player
+        public Joystick joystick_right = new Joystick();
+        public Joystick joystick_left = new Joystick();//create a joystick to move player
         public Matrix world = Matrix.CreateTranslation(new Vector3(0, 0, 0)); //world cordinates lol
         public Matrix view = Matrix.CreateLookAt(new Vector3(0, 0, 100), new Vector3(0, 0, 0), Vector3.UnitY); //creates look at view for camera
         public Matrix projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), 800f / 480f, 0.1f, 100f); //calculate projection
         //find screen height and width
-        public float SCREEN_HEIGHT;
-        public float SCREEN_WIDTH;
+        public float SCREEN_HEIGHT, SCREEN_WIDTH;
+        public float enemyCreateDelay;
         //find mouse cordinates in world, vectors for left-up and right down corners in world space
         public Vector3 mouseInWorld, upLeft, downRight;
         public Vector2 mousePosition; //vector for mouse position in screen-space
         public double time; //used to estimate time
-        public int enemyCount = 0;
         #endregion
 
         public Game1()
@@ -61,8 +61,9 @@ namespace SpaceShooter
             //make sure that projection is using screen size correctly
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), SCREEN_WIDTH / SCREEN_HEIGHT, 0.1f, 1000f);
             IsMouseVisible = true; // show mouse
-            joystick.Initialize(SCREEN_HEIGHT, SCREEN_WIDTH); //initialize joystick to right corner
-            
+            joystick_right.Initialize(this, new Vector2(120, SCREEN_HEIGHT - 120)); //initialize joystick to right corner
+            joystick_left.Initialize(this, new Vector2(SCREEN_WIDTH -120, SCREEN_HEIGHT-120)); //initialize joystick to right corner
+            player.Health = 100;
             base.Initialize(); //init base of monogame
             
         }
@@ -76,7 +77,7 @@ namespace SpaceShooter
 
             bulletTexture = Content.Load<Texture2D>("lazeh_uv");
             font = Content.Load<SpriteFont>("font"); //load dummy font for debugging
-            joystick.jsTexture = Content.Load<Texture2D>("joystick");//load joystick texture from Content
+            jsTexture = Content.Load<Texture2D>("joystick");//load joystick texture from Content
         }
 
         protected override void UnloadContent()
@@ -100,8 +101,8 @@ namespace SpaceShooter
             SCREEN_HEIGHT = _viewport.Height;
             SCREEN_WIDTH = _viewport.Width;
             //update player
-            player.position.X -= joystick.dir.X*player.speed;
-            player.position.Y += joystick.dir.Y*player.speed;
+            player.position.X -= joystick_right.dir.X*player.speed;
+            player.position.Y += joystick_right.dir.Y*player.speed;
             //check for borders
             Vector3 var1 = _viewport.Unproject(new Vector3(0,0,0), projection, view, world);//these two first are finding what cordinates in world space are current (0,0)
             Vector3 var2 = _viewport.Unproject(new Vector3(0, 0, 100), projection, view, world);//meaning the left up corner
@@ -113,20 +114,39 @@ namespace SpaceShooter
             //clamp player position within borders
             player.position.X = MathHelper.Clamp(player.position.X, upLeft.X,downRight.X);
             player.position.Y = MathHelper.Clamp(player.position.Y, downRight.Y, upLeft.Y);
+            HandleEnemies();
             player.Update(this);//position is not done, update it...
-            if (enemyList.Count < 100)
-            {
-                Enemy enemy = new Enemy(this);
-                enemyList.Add(enemy);
-                enemyCount++;
-            }
-            foreach (Enemy e in enemyList)
-            {
-                e.Update();
-            }
             base.Update(gameTime);
         }
         //-----------------------------------------//
+        private void HandleEnemies()
+        {
+            //create some random enemies
+            if (enemyCreateDelay + 0.5f <= (float)time)
+            {
+                Enemy enemy = new Enemy(this);
+                enemyList.Add(enemy);
+                enemyCreateDelay = (float)time;
+            }
+            //check enemy updates
+            if (enemyList.Count >= 1)
+            {
+                for (int i = 0; i < enemyList.Count; i++)
+                {
+                    enemyList[i].Update();
+                    enemyList[i].UpdateCollision(enemyList, i);
+                }
+            }
+            //check for death
+            foreach (Enemy e in enemyList)
+            {
+                if (e.shouldDie)
+                {
+                    enemyList.Remove(e);
+                    break;
+                }
+            }
+        }
         private void HandleInput()
         {
             MouseState currentMouseState = Mouse.GetState();//get mouse state
@@ -142,63 +162,121 @@ namespace SpaceShooter
                 Vector3 pos2 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 0), projection, view, world);
                 mouseInWorld = 1000*(pos2 - pos1);
                 mouseInWorld.Z = 0; //just clearing that touch plane is always z=0
-                #region joystick touches
-                joystick.anchorPos = new Vector2(SCREEN_WIDTH - 200, SCREEN_HEIGHT - 200); //anchor position is where joystick returns when unreleased
-                joystick.normal = Vector2.Normalize(Vector2.Subtract(joystick.anchorPos, touch.Position)); //normal is vector of where joystick is pointing
+                #region Right joystick touches
+                joystick_right.normal = Vector2.Normalize(Vector2.Subtract(joystick_right.anchorPos, touch.Position)); //normal is vector of where joystick is pointing
                 //check if user is moving joystick
-                if (joystick.anchorPos != joystick.position)
+                if (joystick_right.anchorPos != joystick_right.position)
                 {
                     //count the direction
-                    joystick.dir = Vector2.Normalize(Vector2.Subtract(joystick.anchorPos, joystick.position));
+                    joystick_right.dir = Vector2.Normalize(Vector2.Subtract(joystick_right.anchorPos, joystick_right.position));
                 }
                 else
                 {
                     //otherwise moving direction is Zero
-                    joystick.dir = Vector2.Zero;
+                    joystick_right.dir = Vector2.Zero;
                 }
                 //check the overlapping touches for player and joystick, joystick always wins
-                if (joystick.touchID == player.touchID)
+                if (joystick_right.touchID == player.touchID)
                 {
-                    joystick.touchID = -1;
+                    joystick_right.touchID = -1;
                     player.isPressed = false;
-                    joystick.isPressed = false;
+                    joystick_right.isPressed = false;
                 }
                 //if joystick is in use....
                 //check if touch that we are checking now is indeed touch that is registered for joystick
-                if (joystick.isPressed && touch.Id == joystick.touchID)
+                if (joystick_right.isPressed && touch.Id == joystick_right.touchID)
                 {
                     //check if touchs state is still moving
                     if (touch.State != TouchLocationState.Released)
                     {
                         //handle joystick position. if movement isnt too far away from anchor
-                        if ((float)Vector2.Subtract(mousePosition, joystick.anchorPos).Length() < 100f)
-                            joystick.position = touch.Position;
+                        if ((float)Vector2.Subtract(mousePosition, joystick_right.anchorPos).Length() < 100f)
+                            joystick_right.position = touch.Position;
                         //otherwise dont move it too far away
                         else
-                            joystick.position = Vector2.Add(joystick.anchorPos, joystick.normal * -100f);
+                            joystick_right.position = Vector2.Add(joystick_right.anchorPos, joystick_right.normal * -100f);
                     }
                     //if touch is registered for joystick, but has been released
                     else
                     {
-                            joystick.isPressed = false; //joystick is not in use anymore, looking for new touchID
-                            joystick.position = joystick.anchorPos; //return joystick to its anchor
+                            joystick_right.isPressed = false; //joystick is not in use anymore, looking for new touchID
+                            joystick_right.position = joystick_right.anchorPos; //return joystick to its anchor
                     }
                 }
                 //if joystick isn´t already in use...
                 else
                 {
-                    if (!joystick.isPressed)
+                    if (!joystick_right.isPressed)
                     {
                         //check if current touch is close enough to joystic, doenst matter if its in use of player
-                        if (Math.Abs(mousePosition.X - joystick.position.X) <= 30
-                            && Math.Abs(mousePosition.Y - joystick.position.Y) <= 30)
+                        if (Math.Abs(mousePosition.X - joystick_right.position.X) <= 30
+                            && Math.Abs(mousePosition.Y - joystick_right.position.Y) <= 30)
                         {
-                            joystick.isPressed = true;
-                            joystick.touchID = touch.Id; //register this touch for joystick
+                            joystick_right.isPressed = true;
+                            joystick_right.touchID = touch.Id; //register this touch for joystick
                         }
                         //otherwise keep the joystick in anchor, if its not there already...
                         else
-                            joystick.position = joystick.anchorPos;
+                            joystick_right.position = joystick_right.anchorPos;
+                    }
+                }
+                #endregion
+                #region Left joystick touches
+                joystick_left.normal = Vector2.Normalize(Vector2.Subtract(joystick_left.anchorPos, touch.Position)); //normal is vector of where joystick is pointing
+                //check if user is moving joystick
+                if (joystick_left.anchorPos != joystick_left.position)
+                {
+                    //count the direction
+                    joystick_left.dir = Vector2.Normalize(Vector2.Subtract(joystick_left.anchorPos, joystick_left.position));
+                }
+                else
+                {
+                    //otherwise moving direction is Zero
+                    joystick_left.dir = Vector2.Zero;
+                }
+                //check the overlapping touches for player and joystick, joystick always wins
+                if (joystick_left.touchID == player.touchID)
+                {
+                    joystick_left.touchID = -1;
+                    player.isPressed = false;
+                    joystick_left.isPressed = false;
+                }
+                //if joystick is in use....
+                //check if touch that we are checking now is indeed touch that is registered for joystick
+                if (joystick_left.isPressed && touch.Id == joystick_left.touchID)
+                {
+                    //check if touchs state is still moving
+                    if (touch.State != TouchLocationState.Released)
+                    {
+                        //handle joystick position. if movement isnt too far away from anchor
+                        if ((float)Vector2.Subtract(mousePosition, joystick_left.anchorPos).Length() < 100f)
+                            joystick_left.position = touch.Position;
+                        //otherwise dont move it too far away
+                        else
+                            joystick_left.position = Vector2.Add(joystick_left.anchorPos, joystick_left.normal * -100f);
+                    }
+                    //if touch is registered for joystick, but has been released
+                    else
+                    {
+                        joystick_left.isPressed = false; //joystick is not in use anymore, looking for new touchID
+                        joystick_left.position = joystick_left.anchorPos; //return joystick to its anchor
+                    }
+                }
+                //if joystick isn´t already in use...
+                else
+                {
+                    if (!joystick_left.isPressed)
+                    {
+                        //check if current touch is close enough to joystic, doenst matter if its in use of player
+                        if (Math.Abs(mousePosition.X - joystick_left.position.X) <= 30
+                            && Math.Abs(mousePosition.Y - joystick_left.position.Y) <= 30)
+                        {
+                            joystick_left.isPressed = true;
+                            joystick_left.touchID = touch.Id; //register this touch for joystick
+                        }
+                        //otherwise keep the joystick in anchor, if its not there already...
+                        else
+                            joystick_left.position = joystick_left.anchorPos;
                     }
                 }
                 #endregion
@@ -216,7 +294,7 @@ namespace SpaceShooter
                 else
                 {
                     //check for player touch
-                    if (touch.Id != joystick.touchID)
+                    if (touch.Id != joystick_right.touchID && touch.Id != joystick_left.touchID)
                     {
                         player.isPressed = true;
                         player.touchID = touch.Id; //register current touch id for player use
@@ -233,15 +311,15 @@ namespace SpaceShooter
             _spriteBatch.DrawString(font, "mouse pos " + mousePosition, new Vector2(50, 25), Color.Black);
             _spriteBatch.DrawString(font, "mouse in world: " + mouseInWorld, new Vector2(50,50), Color.Black);
             _spriteBatch.DrawString(font, "player pos " + player.position, new Vector2(50, 75), Color.Black);
-            _spriteBatch.DrawString(font, "joystick" + Vector2.Subtract(joystick.anchorPos, joystick.position).Length(), new Vector2(50, 100), Color.Black);
-            _spriteBatch.DrawString(font, "joystick anchor" + joystick.anchorPos, new Vector2(50, 125), Color.Black);
-            _spriteBatch.DrawString(font, "joystic pos" + joystick.position, new Vector2(50, 150), Color.Black);
+            _spriteBatch.DrawString(font, "joystick" + Vector2.Subtract(joystick_right.anchorPos, joystick_right.position).Length(), new Vector2(50, 100), Color.Black);
+            _spriteBatch.DrawString(font, "joystick anchor" + joystick_right.anchorPos, new Vector2(50, 125), Color.Black);
+            _spriteBatch.DrawString(font, "joystic pos" + joystick_right.position, new Vector2(50, 150), Color.Black);
             _spriteBatch.DrawString(font, "border0" + upLeft, new Vector2(50, 175), Color.Black);
             _spriteBatch.DrawString(font, "border1" + downRight, new Vector2(50, 200), Color.Black);
             if(player.bulletArray.Count >= 1)
                 _spriteBatch.DrawString(font, "last Bullet position " + player.bulletArray[player.bulletArray.Count-1].position, new Vector2(50, 225), Color.Black);
             _spriteBatch.DrawString(font, "angle " + player.angle, new Vector2(50, 250), Color.Black);
-            _spriteBatch.DrawString(font, "enemy pos" + enemyList[0].position, new Vector2(50, 275), Color.Black);
+            _spriteBatch.DrawString(font, "Player Health" + player.Health, new Vector2(50, 275), Color.Black);
             _spriteBatch.End();
             foreach (Enemy e in enemyList)
             {
@@ -249,7 +327,8 @@ namespace SpaceShooter
             }
             base.Update(gameTime);
             player.Draw(_spriteBatch, font);
-            joystick.Draw(_spriteBatch);
+            joystick_right.Draw(_spriteBatch);
+            joystick_left.Draw(_spriteBatch);
             base.Draw(gameTime);
         }
         //----calculate the direction of player lookin-------------//

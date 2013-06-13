@@ -28,6 +28,7 @@ namespace SpaceShooter
         public BoundingBox physicsBody; //bounding box variables for player and dummy
         public double lastShot; //time after last time player shot
         public List<Bullet> bulletArray = new List<Bullet>(); //array for all bullet projectiles
+        public float Health;
         #endregion
         //---------------main update for player--------------------//
         public void Update(Game1 g)
@@ -35,14 +36,15 @@ namespace SpaceShooter
             //instance game1
             game = g;
             //calculate speed
-            speed =  Vector2.Subtract(game.joystick.anchorPos, game.joystick.position).Length()/100;
+            speed =  Vector2.Subtract(game.joystick_right.anchorPos, game.joystick_right.position).Length()/100;
             //create boundingbox for player and randomcube //TESTS//
             physicsBody = new BoundingBox(new Vector3(position.X - 5, position.Y - 5, position.Y - 5), new Vector3(position.X + 5, position.Y + 5, position.Y + 5));
             //if shooting == touching but not moving joystick
-            if (isPressed)
+            if (game.joystick_left.isPressed)
             {
-                angle = game.LookAt(position, aimSpot, angle, turnSpeed);
-                if (game.time >= lastShot+1)
+                angle = game.LookAt(new Vector3(game.joystick_left.anchorPos.X, -game.joystick_left.anchorPos.Y, 0),
+                    new Vector3(game.joystick_left.position.X, -game.joystick_left.position.Y, 0), angle, turnSpeed);
+                if (game.time >= lastShot+0.3f)
                 {
                     Shoot();
                     lastShot = game.time;
@@ -57,7 +59,7 @@ namespace SpaceShooter
         {
             if (0.5 >= (angle - game.LookAt(position, aimSpot, angle, turnSpeed)))
             {
-                Bullet bullet = new Bullet(position, Vector3.Normalize(position - aimSpot));
+                Bullet bullet = new Bullet(position, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)));
                 bullet.Initialize(game, angle);
                 if (bullet != null)
                     bulletArray.Add(bullet);

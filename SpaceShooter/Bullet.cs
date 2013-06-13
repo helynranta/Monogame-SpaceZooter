@@ -20,6 +20,7 @@ namespace SpaceShooter
         public Vector3 flyDir;
         public float spawnTime;
         public Boolean shouldDie = false;
+        public BoundingBox physicsBody;
 
         public Bullet(Vector3 spawnPoint, Vector3 flyDir)
         {
@@ -43,6 +44,19 @@ namespace SpaceShooter
                 shouldDie = true;
             }
             position -= flyDir*2;
+            physicsBody = new BoundingBox(position - new Vector3(1, 1, 1), position + new Vector3(1, 1, 1));
+            updateCollision();
+        }
+        public void updateCollision()
+        {
+            foreach(Enemy e in game.enemyList)
+            {
+                if (physicsBody.Intersects(e.physicsBody))
+                {
+                    e.shouldDie = true;
+                    shouldDie = true;
+                }
+            }
         }
         #region drawing
         public void Draw()

@@ -11,6 +11,7 @@ namespace SpaceShooter
     //JOYSTICK
     public class Joystick
     {
+        public Game1 game;
         public Texture2D jsTexture;
         public Vector2 anchorPos;
         public Vector2 position;
@@ -20,15 +21,17 @@ namespace SpaceShooter
         public Boolean isPressed = false;
 
 
-        public void Initialize(float sh, float sw)
+        public void Initialize(Game1 g, Vector2 pos)
         {
-            position = new Vector2(sw - 200, sh - 200);
+            game = g;
+            position = pos;
+            anchorPos = pos;
         }
         //draw it... -.-
         public void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Begin();
-            _spriteBatch.Draw(jsTexture, new Vector2(position.X-50, position.Y-50), Color.White);
+            _spriteBatch.Draw(game.jsTexture, new Vector2(position.X-50, position.Y-50), Color.White);
             _spriteBatch.End();
 
         }

@@ -131,7 +131,6 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Joystick.cs" />
-    <Compile Include="PhysicsHelper.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
