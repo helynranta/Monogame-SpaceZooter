@@ -30,10 +30,7 @@ namespace SpaceShooter
         //draw it... -.-
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Begin();
             _spriteBatch.Draw(game.jsTexture, new Vector2(position.X-50, position.Y-50), Color.White);
-            _spriteBatch.End();
-
         }
     }
 }

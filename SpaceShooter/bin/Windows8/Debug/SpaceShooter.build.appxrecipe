@@ -88,6 +88,15 @@
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv_0.xnb">
       <PackagePath>Content\lazeh_uv_0.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\circle.xnb">
+      <PackagePath>Content\circle.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diamond.xnb">
+      <PackagePath>Content\diamond.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\star.xnb">
+      <PackagePath>Content\star.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>

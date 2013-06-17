@@ -23,11 +23,11 @@ namespace SpaceShooter
         public GraphicsDeviceManager _graphics; //graphics device
         public SpriteBatch _spriteBatch; //variable for spritebatch
         public Viewport _viewport; //variable for viewport
-        private Effect _blurEffect;
         public Random random = new Random();
         public SpriteFont font; //font for debugging
         public Player player = new Player(); //create a new player
         public Model bullet = new Model();
+        public BasicEffect basicEffect;
         public Texture2D bulletTexture;
         public Texture2D jsTexture;
         public Enemy enemy;
@@ -44,6 +44,10 @@ namespace SpaceShooter
         public Vector3 mouseInWorld, upLeft, downRight;
         public Vector2 mousePosition; //vector for mouse position in screen-space
         public double time; //used to estimate time
+        //using our particlesystem
+        public ParticleEngine particleEngine;
+        public List<Texture2D> particleTextures = new List<Texture2D>();
+        private List<ParticleEngine> emitters = new List<ParticleEngine>();
         #endregion
 
         public Game1()
@@ -74,10 +78,19 @@ namespace SpaceShooter
             player.model = Content.Load<Model>("spaceship");//Load player model from Content
             player.texture = Content.Load<Texture2D>("spaceship_uv");//load player texture from Content
             bullet = Content.Load<Model>("lazeh");
-
             bulletTexture = Content.Load<Texture2D>("lazeh_uv");
             font = Content.Load<SpriteFont>("font"); //load dummy font for debugging
             jsTexture = Content.Load<Texture2D>("joystick");//load joystick texture from Content
+            //create Basic effect
+            basicEffect = new BasicEffect(GraphicsDevice)
+            {
+                TextureEnabled = true,
+                VertexColorEnabled = true,
+            };
+            //load particle staff
+            particleTextures.Add(Content.Load<Texture2D>("circle"));
+            particleTextures.Add(Content.Load<Texture2D>("diamond"));
+            particleTextures.Add(Content.Load<Texture2D>("star"));
         }
 
         protected override void UnloadContent()
@@ -116,13 +129,22 @@ namespace SpaceShooter
             player.position.Y = MathHelper.Clamp(player.position.Y, downRight.Y, upLeft.Y);
             HandleEnemies();
             player.Update(this);//position is not done, update it...
+
+            if (emitters.Count > 0)
+            {
+                foreach(ParticleEngine p in emitters)
+                {
+                    p.Update();
+                }
+            }
+
             base.Update(gameTime);
         }
         //-----------------------------------------//
         private void HandleEnemies()
         {
             //create some random enemies
-            if (enemyCreateDelay + 0.5f <= (float)time)
+            if (enemyCreateDelay + 1f <= (float)time)
             {
                 Enemy enemy = new Enemy(this);
                 enemyList.Add(enemy);
@@ -143,6 +165,8 @@ namespace SpaceShooter
                 if (e.shouldDie)
                 {
                     enemyList.Remove(e);
+                    particleEngine = new ParticleEngine(particleTextures, e.position, this);
+                    emitters.Add(particleEngine);
                     break;
                 }
             }
@@ -308,6 +332,7 @@ namespace SpaceShooter
         {
             _graphics.GraphicsDevice.Clear(Color.White);
             _spriteBatch.Begin();
+            //draw debugging texts
             _spriteBatch.DrawString(font, "mouse pos " + mousePosition, new Vector2(50, 25), Color.Black);
             _spriteBatch.DrawString(font, "mouse in world: " + mouseInWorld, new Vector2(50,50), Color.Black);
             _spriteBatch.DrawString(font, "player pos " + player.position, new Vector2(50, 75), Color.Black);
@@ -320,15 +345,27 @@ namespace SpaceShooter
                 _spriteBatch.DrawString(font, "last Bullet position " + player.bulletArray[player.bulletArray.Count-1].position, new Vector2(50, 225), Color.Black);
             _spriteBatch.DrawString(font, "angle " + player.angle, new Vector2(50, 250), Color.Black);
             _spriteBatch.DrawString(font, "Player Health" + player.Health, new Vector2(50, 275), Color.Black);
+            _spriteBatch.DrawString(font, "Particle list count" + emitters.Count, new Vector2(50, 300), Color.Black);
+            
+            //draw Joysticks
+            joystick_right.Draw(_spriteBatch);
+            joystick_left.Draw(_spriteBatch);
             _spriteBatch.End();
+            player.Draw(_spriteBatch, font);
+            //draw particles in their own patch
+            if (emitters.Count > 0)
+            {
+                foreach (ParticleEngine p in emitters)
+                {
+                    p.Draw(_spriteBatch);
+                }
+            }
+            
+            //go and draw each enemy
             foreach (Enemy e in enemyList)
             {
                 e.Draw();
             }
-            base.Update(gameTime);
-            player.Draw(_spriteBatch, font);
-            joystick_right.Draw(_spriteBatch);
-            joystick_left.Draw(_spriteBatch);
             base.Draw(gameTime);
         }
         //----calculate the direction of player lookin-------------//

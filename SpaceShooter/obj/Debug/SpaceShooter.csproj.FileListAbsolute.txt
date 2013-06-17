@@ -65,7 +65,3 @@ C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\p
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\LanguageQualifiers.txt
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\ProjectArchitectures.txt
 C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\SpaceShooter.csprojResolveAssemblyReference.cache
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\priconfig.xml.intermediate
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\layout.resfiles.intermediate
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\resources.resfiles.intermediate
-C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\obj\Debug\pri.resfiles.intermediate

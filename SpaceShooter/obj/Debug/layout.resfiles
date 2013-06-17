@@ -2,6 +2,8 @@ Assets\Logo.png
 Assets\SmallLogo.png
 Assets\SplashScreen.png
 Assets\StoreLogo.png
+Content\circle.xnb
+Content\diamond.xnb
 Content\font.xnb
 Content\joystick.xnb
 Content\joystick_background.xnb
@@ -10,3 +12,4 @@ Content\lazeh_uv.xnb
 Content\lazeh_uv_0.xnb
 Content\spaceship.xnb
 Content\spaceship_uv.xnb
+Content\star.xnb
