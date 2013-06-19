@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="HealthBar.cs" />
     <Compile Include="Joystick.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleEngine.cs" />
@@ -152,9 +153,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\lazeh_uv_0.xnb" />
-    <Content Include="Content\circle.xnb" />
     <Content Include="Content\diamond.xnb" />
-    <Content Include="Content\star.xnb" />
+    <Content Include="Content\smoke2.xnb" />
+    <Content Include="Content\datEnemy.xnb" />
+    <Content Include="Content\datEnemyUV.xnb" />
+    <Content Include="Content\datEnemyUV_0.xnb" />
+    <Content Include="shieldTex.png" />
+    <Content Include="shield.fbx" />
+    <Content Include="Content\shield.xnb" />
+    <Content Include="Content\shieldTex.xnb" />
+    <Content Include="Content\shieldTex_0.xnb" />
     <None Include="SpaceShooter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

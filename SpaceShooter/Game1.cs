@@ -27,9 +27,11 @@ namespace SpaceShooter
         public SpriteFont font; //font for debugging
         public Player player = new Player(); //create a new player
         public Model bullet = new Model();
+        public Model enemyModel = new Model();
         public BasicEffect basicEffect;
         public Texture2D bulletTexture;
         public Texture2D jsTexture;
+        public Texture2D enemyTexture;
         public Enemy enemy;
         public List<Enemy> enemyList = new List<Enemy>();
         public Joystick joystick_right = new Joystick();
@@ -39,7 +41,6 @@ namespace SpaceShooter
         public Matrix projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), 800f / 480f, 0.1f, 100f); //calculate projection
         //find screen height and width
         public float SCREEN_HEIGHT, SCREEN_WIDTH;
-        public float enemyCreateDelay;
         //find mouse cordinates in world, vectors for left-up and right down corners in world space
         public Vector3 mouseInWorld, upLeft, downRight;
         public Vector2 mousePosition; //vector for mouse position in screen-space
@@ -48,6 +49,12 @@ namespace SpaceShooter
         public ParticleEngine particleEngine;
         public List<Texture2D> particleTextures = new List<Texture2D>();
         private List<ParticleEngine> emitters = new List<ParticleEngine>();
+        public Texture2D jsBackgroundTex { get; set; }
+        public Model shieldModel;
+        public Texture2D shieldTexture;
+        public int enemiesKilled = 0;
+        public float lastEnemySpawn;
+        public float enemyCreateDelay = 7f;
         #endregion
 
         public Game1()
@@ -69,7 +76,11 @@ namespace SpaceShooter
             joystick_left.Initialize(this, new Vector2(SCREEN_WIDTH -120, SCREEN_HEIGHT-120)); //initialize joystick to right corner
             player.Health = 100;
             base.Initialize(); //init base of monogame
-            
+            lastEnemySpawn = (float)time;
+
+            _graphics.GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
+            _graphics.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+ 
         }
         //-------------------Loading Content-----------------------//
         protected override void LoadContent()
@@ -79,8 +90,11 @@ namespace SpaceShooter
             player.texture = Content.Load<Texture2D>("spaceship_uv");//load player texture from Content
             bullet = Content.Load<Model>("lazeh");
             bulletTexture = Content.Load<Texture2D>("lazeh_uv");
+            enemyModel = Content.Load<Model>("datEnemy");
+            enemyTexture = Content.Load<Texture2D>("datEnemyUV");
             font = Content.Load<SpriteFont>("font"); //load dummy font for debugging
             jsTexture = Content.Load<Texture2D>("joystick");//load joystick texture from Content
+            jsBackgroundTex = Content.Load<Texture2D>("joystick_background");
             //create Basic effect
             basicEffect = new BasicEffect(GraphicsDevice)
             {
@@ -88,9 +102,12 @@ namespace SpaceShooter
                 VertexColorEnabled = true,
             };
             //load particle staff
-            particleTextures.Add(Content.Load<Texture2D>("circle"));
-            particleTextures.Add(Content.Load<Texture2D>("diamond"));
-            particleTextures.Add(Content.Load<Texture2D>("star"));
+            //only one texture in this list atm...
+            particleTextures.Add(Content.Load<Texture2D>("smoke2"));
+
+            shieldModel = Content.Load<Model>("shield");
+            shieldTexture = Content.Load<Texture2D>("shieldTex");
+
         }
 
         protected override void UnloadContent()
@@ -132,9 +149,14 @@ namespace SpaceShooter
 
             if (emitters.Count > 0)
             {
-                foreach(ParticleEngine p in emitters)
+                for (int emitter = 0; emitter < emitters.Count; emitter++ )
                 {
-                    p.Update();
+                    emitters[emitter].Update();
+                    if (emitters[emitter].shouldDie)
+                    {
+                        emitters.RemoveAt(emitter);
+                        emitter--;
+                    }
                 }
             }
 
@@ -144,33 +166,35 @@ namespace SpaceShooter
         private void HandleEnemies()
         {
             //create some random enemies
-            if (enemyCreateDelay + 1f <= (float)time)
+
+            if (lastEnemySpawn + enemyCreateDelay<= (float)time)
             {
                 Enemy enemy = new Enemy(this);
                 enemyList.Add(enemy);
-                enemyCreateDelay = (float)time;
+                lastEnemySpawn = (float)time;
+                if (enemyCreateDelay > 0.8f)
+                    enemyCreateDelay -= 0.4f;
             }
             //check enemy updates
-            if (enemyList.Count >= 1)
+            for (int e = 0; e < enemyList.Count; e++ )
             {
-                for (int i = 0; i < enemyList.Count; i++)
+                enemyList[e].Update();
+                enemyList[e].UpdateCollision(enemyList, e);
+                //check for death
+                if (enemyList[e].shouldDie)
                 {
-                    enemyList[i].Update();
-                    enemyList[i].UpdateCollision(enemyList, i);
-                }
-            }
-            //check for death
-            foreach (Enemy e in enemyList)
-            {
-                if (e.shouldDie)
-                {
-                    enemyList.Remove(e);
-                    particleEngine = new ParticleEngine(particleTextures, e.position, this);
+                    particleEngine = new ParticleEngine(particleTextures, enemyList[e].position, this);
                     emitters.Add(particleEngine);
-                    break;
+                    enemyList.RemoveAt(e);
+                    e--;
+                    enemiesKilled++;
                 }
             }
         }
+        //<summary>
+        //handles input (dah... -.-)
+        //TODO move joystick input to their own classes and handle touch as a listener --> more modular
+        //</summary>
         private void HandleInput()
         {
             MouseState currentMouseState = Mouse.GetState();//get mouse state
@@ -233,8 +257,8 @@ namespace SpaceShooter
                     if (!joystick_right.isPressed)
                     {
                         //check if current touch is close enough to joystic, doenst matter if its in use of player
-                        if (Math.Abs(mousePosition.X - joystick_right.position.X) <= 30
-                            && Math.Abs(mousePosition.Y - joystick_right.position.Y) <= 30)
+                        if (Math.Abs(mousePosition.X - joystick_right.position.X) <= 80
+                            && Math.Abs(mousePosition.Y - joystick_right.position.Y) <= 80)
                         {
                             joystick_right.isPressed = true;
                             joystick_right.touchID = touch.Id; //register this touch for joystick
@@ -292,8 +316,8 @@ namespace SpaceShooter
                     if (!joystick_left.isPressed)
                     {
                         //check if current touch is close enough to joystic, doenst matter if its in use of player
-                        if (Math.Abs(mousePosition.X - joystick_left.position.X) <= 30
-                            && Math.Abs(mousePosition.Y - joystick_left.position.Y) <= 30)
+                        if (Math.Abs(mousePosition.X - joystick_left.position.X) <= 80
+                            && Math.Abs(mousePosition.Y - joystick_left.position.Y) <= 80)
                         {
                             joystick_left.isPressed = true;
                             joystick_left.touchID = touch.Id; //register this touch for joystick
@@ -304,6 +328,9 @@ namespace SpaceShooter
                     }
                 }
                 #endregion
+                //<summary>
+                //this one is pretty useless atm, it basicly checks if you touch player
+                //</summary>
                 #region player touches
                 //checking if there is already registered input for player, and that we are looking at is one that is registered for player input
                 if (player.isPressed && touch.Id == player.touchID )
@@ -352,6 +379,14 @@ namespace SpaceShooter
             joystick_left.Draw(_spriteBatch);
             _spriteBatch.End();
             player.Draw(_spriteBatch, font);
+            
+            //DrawModel(shieldTexture, shieldModel, player.position, new Vector3(5, 5, 5));
+            
+            //go and draw each enemy
+            foreach (Enemy e in enemyList)
+            {
+                e.Draw();
+            }
             //draw particles in their own patch
             if (emitters.Count > 0)
             {
@@ -360,15 +395,42 @@ namespace SpaceShooter
                     p.Draw(_spriteBatch);
                 }
             }
-            
-            //go and draw each enemy
-            foreach (Enemy e in enemyList)
-            {
-                e.Draw();
-            }
             base.Draw(gameTime);
         }
+        //draw model function
+        public void DrawModel(Texture2D texture, Model thismodel, Vector3 position, float angle)
+        {
+            foreach (ModelMesh mesh in thismodel.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.TextureEnabled = true;
+                    effect.Texture = texture;
+                    effect.World = Matrix.CreateScale(1, 1, 1) * Matrix.CreateRotationZ(angle + MathHelper.ToRadians(-90f)) * Matrix.CreateTranslation(position);
+                    effect.View = view;
+                    effect.Projection = projection;
+                }
+                mesh.Draw();
+            }
+        }
+        public void DrawModel(Texture2D texture, Model thismodel, Vector3 position, Vector3 scale)
+        {
+            foreach (ModelMesh mesh in thismodel.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.TextureEnabled = true;
+                    effect.Texture = texture;
+                    effect.World = Matrix.CreateScale(scale) * Matrix.CreateTranslation(position);
+                    effect.View = view;
+                    effect.Projection = projection;
+                }
+                mesh.Draw();
+            }
+        }
+
         //----calculate the direction of player lookin-------------//
+        //based on some guys code in overstackflow, cant remember
         #region calculations
         public float LookAt(Vector3 position, Vector3 aimSpot, float currentAngle, float turnSpeed)
         {
@@ -380,7 +442,6 @@ namespace SpaceShooter
             return WrapAngle(currentAngle + difference);
 
         }
-
         private static float WrapAngle(float radians)
         {
             while (radians < -MathHelper.Pi)

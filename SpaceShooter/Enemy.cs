@@ -23,8 +23,8 @@ namespace SpaceShooter
         public Enemy(Game1 g)
         {
             game = g;
-            model = game.player.model;
-            texture = game.player.texture;
+            model = game.enemyModel;
+            texture = game.enemyTexture;
             position = CreateSpawnPoint();
             
         }
@@ -61,6 +61,10 @@ namespace SpaceShooter
             {
                 shouldDie = true;
                 game.player.Health -= 1;
+            }
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+
             }
         }
         //------------Drawing functions for player-----------------//
@@ -106,7 +110,9 @@ namespace SpaceShooter
                 {
                     effect.TextureEnabled = true;
                     effect.Texture = texture;
-                    effect.World = Matrix.CreateRotationZ(angle + MathHelper.ToRadians(-90f)) * Matrix.CreateTranslation(position);
+                    angle += .08f * (float)game.random.NextDouble();
+                    effect.World = Matrix.CreateRotationX(angle) * Matrix.CreateRotationZ(angle) * Matrix.CreateRotationY(angle);
+                    effect.World *= Matrix.CreateTranslation(position);
                     effect.View = game.view;
                     effect.Projection = game.projection;
                 }

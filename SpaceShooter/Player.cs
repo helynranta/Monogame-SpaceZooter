@@ -86,27 +86,12 @@ namespace SpaceShooter
         #region drawing
         public void Draw(SpriteBatch _spriteBatch, SpriteFont font)
         {
-            DrawModel(texture);
+            game.DrawModel(texture, model, position, angle);
+
             foreach (Bullet b in bulletArray)
             {
                 if (b != null)
                     b.Draw();
-            }
-        }
-        //draw model function
-        public void DrawModel(Texture2D texture)
-        {
-            foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.TextureEnabled = true;
-                    effect.Texture = texture;
-                    effect.World = Matrix.CreateRotationZ(angle + MathHelper.ToRadians(-90f)) * Matrix.CreateTranslation(position);
-                    effect.View = game.view;
-                    effect.Projection = game.projection;
-                }
-                mesh.Draw();
             }
         }
         #endregion

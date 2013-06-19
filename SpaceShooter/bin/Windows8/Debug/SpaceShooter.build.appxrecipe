@@ -88,14 +88,32 @@
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv_0.xnb">
       <PackagePath>Content\lazeh_uv_0.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\circle.xnb">
-      <PackagePath>Content\circle.xnb</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diamond.xnb">
       <PackagePath>Content\diamond.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\star.xnb">
-      <PackagePath>Content\star.xnb</PackagePath>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\smoke2.xnb">
+      <PackagePath>Content\smoke2.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemy.xnb">
+      <PackagePath>Content\datEnemy.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemyUV.xnb">
+      <PackagePath>Content\datEnemyUV.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemyUV_0.xnb">
+      <PackagePath>Content\datEnemyUV_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shield.xnb">
+      <PackagePath>Content\shield.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shieldTex.xnb">
+      <PackagePath>Content\shieldTex.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shieldTex_0.xnb">
+      <PackagePath>Content\shieldTex_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shieldTex.png">
+      <PackagePath>shieldTex.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -112,6 +130,9 @@
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shield.fbx">
+      <PackagePath>shield.fbx</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
