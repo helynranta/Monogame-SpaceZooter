@@ -12,6 +12,7 @@ using Windows.UI.Xaml;
 using System.ServiceModel.Dispatcher;
 using System.ServiceModel;
 using SpaceShooter;
+using Microsoft.Xna.Framework.Audio;
 
 //wednesday?
 //Test comment
@@ -24,16 +25,16 @@ namespace SpaceShooter
         public SpriteBatch _spriteBatch; //variable for spritebatch
         public Viewport _viewport; //variable for viewport
         public Random random = new Random();
-        public SpriteFont font; //font for debugging
         public Player player = new Player(); //create a new player
-        public Model bullet = new Model();
-        public Model enemyModel = new Model();
+        public Model bullet, satelliteModel, ufoModel;
         public BasicEffect basicEffect;
-        public Texture2D bulletTexture;
-        public Texture2D jsTexture;
-        public Texture2D enemyTexture;
+        public SpriteFont font; //font for debugging
+        public Texture2D bulletTexture,satelliteTexture,jsTexture, ufoTexture;
         public Enemy enemy;
+        public Ufo ufo;
         public List<Enemy> enemyList = new List<Enemy>();
+        public List<Ufo> ufoList = new List<Ufo>();
+        public List<Bullet> bulletArray = new List<Bullet>(); //array for all bullet projectiles
         public Joystick joystick_right = new Joystick();
         public Joystick joystick_left = new Joystick();//create a joystick to move player
         public Matrix world = Matrix.CreateTranslation(new Vector3(0, 0, 0)); //world cordinates lol
@@ -50,11 +51,16 @@ namespace SpaceShooter
         public List<Texture2D> particleTextures = new List<Texture2D>();
         private List<ParticleEngine> emitters = new List<ParticleEngine>();
         public Texture2D jsBackgroundTex { get; set; }
-        public Model shieldModel;
-        public Texture2D shieldTexture;
+        public Model shieldModel;//simple uv unwrapped sphere
+        public Texture2D shieldTexture;//awesome shield texture
         public int enemiesKilled = 0;
-        public float lastEnemySpawn;
-        public float enemyCreateDelay = 7f;
+        public float lastSatelliteSpawn;
+        public float satelliteCreateDelay = 7f;
+        public float lastUfoSpawn;
+        public float ufoCreateDelay = 10f;
+        //music
+        SoundEffectInstance musicInstance;
+        public Texture2D healthBarTex;
         #endregion
 
         public Game1()
@@ -74,24 +80,26 @@ namespace SpaceShooter
             IsMouseVisible = true; // show mouse
             joystick_right.Initialize(this, new Vector2(120, SCREEN_HEIGHT - 120)); //initialize joystick to right corner
             joystick_left.Initialize(this, new Vector2(SCREEN_WIDTH -120, SCREEN_HEIGHT-120)); //initialize joystick to right corner
-            player.Health = 100;
             base.Initialize(); //init base of monogame
-            lastEnemySpawn = (float)time;
-
+            lastSatelliteSpawn = (float)time;
+            player.Initialize(this);
             _graphics.GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
             _graphics.GraphicsDevice.BlendState = BlendState.AlphaBlend;
- 
         }
         //-------------------Loading Content-----------------------//
         protected override void LoadContent()
         {
+            Content.RootDirectory = "Content";
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             player.model = Content.Load<Model>("spaceship");//Load player model from Content
-            player.texture = Content.Load<Texture2D>("spaceship_uv");//load player texture from Content
+            player.texture = Content.Load<Texture2D>("spaceship_diff");//load player texture from Content
             bullet = Content.Load<Model>("lazeh");
             bulletTexture = Content.Load<Texture2D>("lazeh_uv");
-            enemyModel = Content.Load<Model>("datEnemy");
-            enemyTexture = Content.Load<Texture2D>("datEnemyUV");
+            //load all enemy content
+            satelliteModel = Content.Load<Model>("datEnemy");
+            satelliteTexture = Content.Load<Texture2D>("datEnemyUV");
+            ufoModel = Content.Load<Model>("ufo");
+            ufoTexture = Content.Load<Texture2D>("ufo_diff");
             font = Content.Load<SpriteFont>("font"); //load dummy font for debugging
             jsTexture = Content.Load<Texture2D>("joystick");//load joystick texture from Content
             jsBackgroundTex = Content.Load<Texture2D>("joystick_background");
@@ -107,7 +115,13 @@ namespace SpaceShooter
 
             shieldModel = Content.Load<Model>("shield");
             shieldTexture = Content.Load<Texture2D>("shieldTex");
-
+            //load sound content
+            SoundEffect music = Content.Load<SoundEffect>("soundtrack");
+            musicInstance = music.CreateInstance();
+            musicInstance.IsLooped = true;
+            musicInstance.Play();
+            //healthbar texture
+            healthBarTex = Content.Load<Texture2D>("health");
         }
 
         protected override void UnloadContent()
@@ -118,6 +132,7 @@ namespace SpaceShooter
         //---------------------main game loop----------------------//
         protected override void Update(GameTime gameTime)
         {
+            
             //check if escape is pressed, then exit the game
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
@@ -145,7 +160,7 @@ namespace SpaceShooter
             player.position.X = MathHelper.Clamp(player.position.X, upLeft.X,downRight.X);
             player.position.Y = MathHelper.Clamp(player.position.Y, downRight.Y, upLeft.Y);
             HandleEnemies();
-            player.Update(this);//position is not done, update it...
+            player.Update();//position is not done, update it...
 
             if (emitters.Count > 0)
             {
@@ -159,23 +174,48 @@ namespace SpaceShooter
                     }
                 }
             }
-
+            updateBullets();
             base.Update(gameTime);
         }
         //-----------------------------------------//
+        private void updateBullets()
+        {
+            if (bulletArray != null)
+            {
+                for(int b = 0; b < bulletArray.Count; b++)
+                {
+                    bulletArray[b].Update();
+                    bulletArray[b].updateCollision();
+                    if (bulletArray[b].shouldDie == true)
+                    {
+                        bulletArray.RemoveAt(b);
+                        b--;
+                    }
+                }
+
+            }
+        }
         private void HandleEnemies()
         {
             //create some random enemies
 
-            if (lastEnemySpawn + enemyCreateDelay<= (float)time)
+            if (lastSatelliteSpawn + satelliteCreateDelay<= (float)time)
             {
-                Enemy enemy = new Enemy(this);
+                Enemy enemy = new Enemy(this, satelliteModel, satelliteTexture);
                 enemyList.Add(enemy);
-                lastEnemySpawn = (float)time;
-                if (enemyCreateDelay > 0.8f)
-                    enemyCreateDelay -= 0.4f;
+                lastSatelliteSpawn = (float)time;
+                if (satelliteCreateDelay > 0.8f)
+                    satelliteCreateDelay -= 0.4f;
             }
-            //check enemy updates
+            if (lastUfoSpawn + ufoCreateDelay <= (float)time)
+            {
+                Ufo ufo = new Ufo(this, ufoModel, ufoTexture);
+                ufoList.Add(ufo);
+                lastUfoSpawn = (float)time;
+                if (ufoCreateDelay > 0.8f)
+                    ufoCreateDelay -= 0.2f;
+            }
+            //checksatellite updates
             for (int e = 0; e < enemyList.Count; e++ )
             {
                 enemyList[e].Update();
@@ -187,6 +227,21 @@ namespace SpaceShooter
                     emitters.Add(particleEngine);
                     enemyList.RemoveAt(e);
                     e--;
+                    enemiesKilled++;
+                }
+            }
+            //check for ufo updates
+            for (int u = 0; u < ufoList.Count; u++)
+            {
+                ufoList[u].Update();
+                ufoList[u].UpdateCollision(ufoList, u);
+                //check for death
+                if (ufoList[u].shouldDie)
+                {
+                    particleEngine = new ParticleEngine(particleTextures, ufoList[u].position, this);
+                    emitters.Add(particleEngine);
+                    ufoList.RemoveAt(u);
+                    u--;
                     enemiesKilled++;
                 }
             }
@@ -359,21 +414,6 @@ namespace SpaceShooter
         {
             _graphics.GraphicsDevice.Clear(Color.White);
             _spriteBatch.Begin();
-            //draw debugging texts
-            _spriteBatch.DrawString(font, "mouse pos " + mousePosition, new Vector2(50, 25), Color.Black);
-            _spriteBatch.DrawString(font, "mouse in world: " + mouseInWorld, new Vector2(50,50), Color.Black);
-            _spriteBatch.DrawString(font, "player pos " + player.position, new Vector2(50, 75), Color.Black);
-            _spriteBatch.DrawString(font, "joystick" + Vector2.Subtract(joystick_right.anchorPos, joystick_right.position).Length(), new Vector2(50, 100), Color.Black);
-            _spriteBatch.DrawString(font, "joystick anchor" + joystick_right.anchorPos, new Vector2(50, 125), Color.Black);
-            _spriteBatch.DrawString(font, "joystic pos" + joystick_right.position, new Vector2(50, 150), Color.Black);
-            _spriteBatch.DrawString(font, "border0" + upLeft, new Vector2(50, 175), Color.Black);
-            _spriteBatch.DrawString(font, "border1" + downRight, new Vector2(50, 200), Color.Black);
-            if(player.bulletArray.Count >= 1)
-                _spriteBatch.DrawString(font, "last Bullet position " + player.bulletArray[player.bulletArray.Count-1].position, new Vector2(50, 225), Color.Black);
-            _spriteBatch.DrawString(font, "angle " + player.angle, new Vector2(50, 250), Color.Black);
-            _spriteBatch.DrawString(font, "Player Health" + player.Health, new Vector2(50, 275), Color.Black);
-            _spriteBatch.DrawString(font, "Particle list count" + emitters.Count, new Vector2(50, 300), Color.Black);
-            
             //draw Joysticks
             joystick_right.Draw(_spriteBatch);
             joystick_left.Draw(_spriteBatch);
@@ -387,6 +427,10 @@ namespace SpaceShooter
             {
                 e.Draw();
             }
+            foreach (Ufo u in ufoList)
+            {
+                u.Draw();
+            }
             //draw particles in their own patch
             if (emitters.Count > 0)
             {
@@ -396,22 +440,6 @@ namespace SpaceShooter
                 }
             }
             base.Draw(gameTime);
-        }
-        //draw model function
-        public void DrawModel(Texture2D texture, Model thismodel, Vector3 position, float angle)
-        {
-            foreach (ModelMesh mesh in thismodel.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.TextureEnabled = true;
-                    effect.Texture = texture;
-                    effect.World = Matrix.CreateScale(1, 1, 1) * Matrix.CreateRotationZ(angle + MathHelper.ToRadians(-90f)) * Matrix.CreateTranslation(position);
-                    effect.View = view;
-                    effect.Projection = projection;
-                }
-                mesh.Draw();
-            }
         }
         public void DrawModel(Texture2D texture, Model thismodel, Vector3 position, Vector3 scale)
         {

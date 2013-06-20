@@ -138,13 +138,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ufo.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="Content\spaceship.xnb" />
-    <Content Include="Content\spaceship_uv.xnb" />
     <Content Include="Content\font.xnb" />
     <Content Include="Content\joystick.xnb" />
     <Content Include="Content\joystick_background.xnb" />
@@ -163,6 +163,13 @@
     <Content Include="Content\shield.xnb" />
     <Content Include="Content\shieldTex.xnb" />
     <Content Include="Content\shieldTex_0.xnb" />
+    <Content Include="Content\soundtrack.xnb" />
+    <Content Include="Content\health.xnb" />
+    <Content Include="Content\spaceship_diff.xnb" />
+    <Content Include="Content\spaceship_diff_0.xnb" />
+    <Content Include="Content\ufo.xnb" />
+    <Content Include="Content\ufo_diff.xnb" />
+    <Content Include="Content\ufo_diff_0.xnb" />
     <None Include="SpaceShooter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

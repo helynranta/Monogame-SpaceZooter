@@ -17,23 +17,22 @@ namespace SpaceShooter
         public Model model;
         public BoundingBox physicsBody;
         private float angle;
-        private float enemySpeed = 0.3f;
+        public float enemySpeed = 0.5f;
         public bool newDir = false;
         public bool shouldDie = false;
-        public Enemy(Game1 g)
+        public Enemy(Game1 g, Model mod, Texture2D tex)
         {
             game = g;
-            model = game.enemyModel;
-            texture = game.enemyTexture;
-            position = CreateSpawnPoint();
-            
+            model = mod;
+            texture = tex;
+            position = CreateSpawnPoint();        
         }
         private Vector3 CreateSpawnPoint()
-        {
-            int luku = game.random.Next(1,4);
+        {   //create random spawn positions for enemies
+            int luku = game.random.Next(1,4);//first choose one of each 4 sides of screen
             Vector3 spawnPoint = new Vector3();
-            switch(luku){
-                case 1:
+            switch(luku){//then based on different sides, calculate random spot in that area just behind the screen border
+                case 1://upLeft and downRight are variables calculated from screenspace to worldspace to find out 3d cordinates for screen borders
                     spawnPoint = new Vector3(game.random.Next(-(int)game.downRight.X,(int)game.downRight.X), game.upLeft.Y+5f, 0);
                     break;
                 case 2:
@@ -50,51 +49,48 @@ namespace SpaceShooter
         }
         public void Update()
         {
+            //update new bounding box position to this enemy
             physicsBody = new BoundingBox(position - new Vector3(3, 3, 3), position + new Vector3(3, 3, 3));
-            angle = game.LookAt(position,game.player.position,angle,0.08f);
+            //if enemy is far away from player, move it towards players position
             if ((position - game.player.position).Length() > 3f)
             {
                 flyDir = Vector3.Normalize(game.player.position - position) * enemySpeed;
                 position += flyDir;
             }
+            //check if enemy is close enough to player, then make it die
             else
             {
                 shouldDie = true;
-                game.player.Health -= 1;
-            }
-            foreach (ModelMesh mesh in model.Meshes)
-            {
-
+                game.player.health -= 5;
             }
         }
-        //------------Drawing functions for player-----------------//
-        #region drawing
+        //update collisions
         public void UpdateCollision(List<Enemy> boundList, int index)
         {
-            bool noCollision = true;
-            for (int a = index+2; a < boundList.Count; a++)
+            bool noCollision = true; //this is checked true always at start
+            for (int a = index+2; a < boundList.Count; a++)//loop threw all unchecked physicsbodys
             {
-                if (physicsBody.Intersects(boundList[a].physicsBody))
-                {
+                if (physicsBody.Intersects(boundList[a].physicsBody))//if it touches
+                {   //check witch one is closer to player
                     if ((game.player.position - position).Length() < (game.player.position - boundList[a].position).Length())
-                    {
+                    {   //if this one is closer, move it faster
                         enemySpeed += .005f;
-                        boundList[a].enemySpeed -= 0.02f;
+                        boundList[a].enemySpeed -= 0.02f;//and other one slower
                         if (boundList[a].enemySpeed < 0.01f)
                             boundList[a].enemySpeed = 0.01f;
                     }
                     else
-                    {
+                    {   //if your slower, tag noCollision false
                         noCollision = false;
-                        boundList[a].enemySpeed += .005f;
-                        enemySpeed -= 0.02f;
+                        boundList[a].enemySpeed += .005f;//move other one faster
+                        enemySpeed -= 0.02f;//and this one slower
                         if (enemySpeed < 0.01f)
                             enemySpeed = 0.01f;
                     }
                 }
             }
-            if (noCollision)
-                if (enemySpeed <= .2f)
+            if (noCollision)//if there is no collisions
+                if (enemySpeed <= .2f)//increase speed, if its not more than max level
                     enemySpeed += .01f;
         }
         public void Draw()
@@ -119,6 +115,5 @@ namespace SpaceShooter
                 mesh.Draw();
             }
         }
-        #endregion
     }
 }

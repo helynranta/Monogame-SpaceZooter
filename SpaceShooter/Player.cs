@@ -27,14 +27,20 @@ namespace SpaceShooter
         public float angle = 0.0f; //players current angle
         public BoundingBox physicsBody; //bounding box variables for player and dummy
         public double lastShot; //time after last time player shot
-        public List<Bullet> bulletArray = new List<Bullet>(); //array for all bullet projectiles
-        public float Health;
+        public float health;
+        public HealthBar healthBar;
         #endregion
         //---------------main update for player--------------------//
-        public void Update(Game1 g)
+        public void Initialize(Game1 g)
         {
             //instance game1
             game = g;
+            //ceate a healthbar for player
+            health = 100;
+            healthBar = new HealthBar(health, new Vector2(game.SCREEN_WIDTH / 2 - (game.healthBarTex.Width * health) / 4, game.SCREEN_HEIGHT - 50), game, game.healthBarTex);
+        }
+        public void Update()
+        {
             //calculate speed
             speed =  Vector2.Subtract(game.joystick_right.anchorPos, game.joystick_right.position).Length()/100;
             //create boundingbox for player and randomcube //TESTS//
@@ -50,8 +56,7 @@ namespace SpaceShooter
                     lastShot = game.time;
                 }
             }
-
-            updateBullets();
+            healthBar.Update(health);
         }
         //-----------------calculate shooting action---------------//
         #region shooting and bullets
@@ -59,26 +64,10 @@ namespace SpaceShooter
         {
             if (0.5 >= (angle - game.LookAt(position, aimSpot, angle, turnSpeed)))
             {
-                Bullet bullet = new Bullet(position, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)));
+                Bullet bullet = new Bullet(position, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)), false, true);
                 bullet.Initialize(game, angle);
                 if (bullet != null)
-                    bulletArray.Add(bullet);
-            }
-        }
-        private void updateBullets()
-        {
-            if (bulletArray != null)
-            {
-                foreach (Bullet b in bulletArray)
-                {
-                    b.Update();
-                    if (b.shouldDie == true)
-                    {
-                        bulletArray.Remove(b);
-                        break;
-                    }
-                }
-
+                    game.bulletArray.Add(bullet);
             }
         }
         #endregion
@@ -86,12 +75,28 @@ namespace SpaceShooter
         #region drawing
         public void Draw(SpriteBatch _spriteBatch, SpriteFont font)
         {
-            game.DrawModel(texture, model, position, angle);
-
-            foreach (Bullet b in bulletArray)
+            healthBar.Draw(_spriteBatch);
+            DrawModel();
+            foreach (Bullet b in game.bulletArray)
             {
                 if (b != null)
                     b.Draw();
+            }
+        }
+        //draw model function
+        public void DrawModel()
+        {
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.TextureEnabled = true;
+                    effect.Texture = texture;
+                    effect.World = Matrix.CreateScale(.9f, 1, 1) * Matrix.CreateRotationZ(angle + MathHelper.ToRadians(-90f)) * Matrix.CreateTranslation(position);
+                    effect.View = game.view;
+                    effect.Projection = game.projection;
+                }
+                mesh.Draw();
             }
         }
         #endregion

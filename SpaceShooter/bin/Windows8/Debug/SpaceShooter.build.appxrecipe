@@ -67,9 +67,6 @@
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship.xnb">
       <PackagePath>Content\spaceship.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_uv.xnb">
-      <PackagePath>Content\spaceship_uv.xnb</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\font.xnb">
       <PackagePath>Content\font.xnb</PackagePath>
     </AppxPackagedFile>
@@ -111,6 +108,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shieldTex_0.xnb">
       <PackagePath>Content\shieldTex_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\soundtrack.xnb">
+      <PackagePath>Content\soundtrack.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\health.xnb">
+      <PackagePath>Content\health.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_diff.xnb">
+      <PackagePath>Content\spaceship_diff.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_diff_0.xnb">
+      <PackagePath>Content\spaceship_diff_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo.xnb">
+      <PackagePath>Content\ufo.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo_diff.xnb">
+      <PackagePath>Content\ufo_diff.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo_diff_0.xnb">
+      <PackagePath>Content\ufo_diff_0.xnb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shieldTex.png">
       <PackagePath>shieldTex.png</PackagePath>

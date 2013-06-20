@@ -21,11 +21,15 @@ namespace SpaceShooter
         public float spawnTime;
         public Boolean shouldDie = false;
         public BoundingBox physicsBody;
+        public bool collideWithPlayer = true;
+        public bool collideWithUfo = true;
 
-        public Bullet(Vector3 spawnPoint, Vector3 flyDir)
+        public Bullet(Vector3 spawnPoint, Vector3 flyDir, bool playerCol, bool ufoCol)
         {
-            this.position = spawnPoint;
+            position = spawnPoint;
             this.flyDir = flyDir;
+            collideWithPlayer = playerCol;
+            collideWithUfo = ufoCol;
         }
         public void Initialize(Game1 g, float a)
         {
@@ -34,8 +38,6 @@ namespace SpaceShooter
             texture = game.bulletTexture;
             angle = a;
             spawnTime = (float)game.time;
-            position -= flyDir * 2;
-
         }
         public void Update()
         {
@@ -43,9 +45,9 @@ namespace SpaceShooter
             {
                 shouldDie = true;
             }
+            position.Z = 0;
             position -= flyDir*2;
             physicsBody = new BoundingBox(position - new Vector3(1, 1, 1), position + new Vector3(1, 1, 1));
-            updateCollision();
         }
         public void updateCollision()
         {
@@ -55,6 +57,25 @@ namespace SpaceShooter
                 {
                     e.shouldDie = true;
                     shouldDie = true;
+                }
+            }
+            if (collideWithUfo)
+            {
+                foreach (Ufo u in game.ufoList)
+                {
+                    if (physicsBody.Intersects(u.physicsBody))
+                    {
+                        u.shouldDie = true;
+                        shouldDie = true;
+                    }
+                }
+            }
+            if (collideWithPlayer)
+            {
+                if (physicsBody.Intersects(game.player.physicsBody) || ((position - game.player.position).Length() < 1f))
+                {
+                    shouldDie = true;
+                    game.player.health -= 10;
                 }
             }
         }

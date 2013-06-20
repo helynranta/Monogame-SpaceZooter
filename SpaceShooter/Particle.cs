@@ -53,23 +53,14 @@ namespace SpaceShooter
         //http://blogs.msdn.com/b/shawnhar/archive/2011/01/12/spritebatch-billboards-in-a-3d-world.aspx
         //idea is to draw particles in 3d space as a 2d objects in spritebatch
         //</summary>
-        public void Draw(SpriteBatch _spriteBatch, Game1 game)
+        public void Draw(SpriteBatch _spriteBatch, Game1 game, Effect particleEffect)
         {
             Viewport viewport = game._viewport;
-            BasicEffect particleEffect = game.basicEffect;
-            //world scale, no Z axis on particle
-            particleEffect.World = Matrix.CreateScale(1, 1, 0);
-            //grab view and projection from game and apply it to particle effect
-            particleEffect.View = game.view;
-            particleEffect.Projection = game.projection;
             Rectangle sourceRectangle = new Rectangle(0,0, texture.Width, texture.Height);
             Vector2 origin = new Vector2(texture.Width/2, texture.Height/2);
             //draw this particle
-            //TODO why start new spritebatch for every particle, make it draw all existing particles in one
-            //--> more efficent
-            _spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, particleEffect);
             _spriteBatch.Draw(texture, new Vector2(position.X, position.Y), sourceRectangle, color*alpha, angle, origin, size, 0, position.Y);
-            _spriteBatch.End();
+
         }
     }
 }

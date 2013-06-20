@@ -10,32 +10,34 @@ namespace SpaceShooter
 {
     public class HealthBar
     {
-        public float Health;
+        public float health;
         private Vector2 position;
         private Texture2D texture;
         private Game1 game;
         
-        public HealthBar(float startHealth, Vector2 pos, Game1 g)
+        public HealthBar(float startHealth, Vector2 pos, Game1 g, Texture2D tex)
         {
-            Health = startHealth;
+            health = startHealth;
             position = pos;
             game = g;
+            texture = tex;
         }
-        public void Update()
+        public void Update(float h)
         {
-
+            if (health > h)
+                health--;
         }
         public void Draw(SpriteBatch _spriteBatch)
         {
-            for(float h = 0; h < Health; h++)
+            _spriteBatch.Begin();
+            for(float h = 0; h < health; h++)
             {
-                SpriteEffects e = new SpriteEffects();
-                Rectangle sourceRectangle = new Rectangle(0, 0, texture.Width, texture.Height);
+                Rectangle sourceRectangle = new Rectangle(0, 0, texture.Width / 2, texture.Height / 2 + (int)(0.5 * h));
                 Vector2 origin = new Vector2(texture.Width/2,texture.Height/2);
-                _spriteBatch.Begin();
-                //_spriteBatch.Draw(texture, new Vector2(position.X - texture.Width+h), position.Y, sourceRectangle, 0f, origin,h, e, 0);
-                _spriteBatch.End();
+                
+                _spriteBatch.Draw(texture, new Vector2(position.X+texture.Width/2*h, position.Y-(int)(0.5*h)), sourceRectangle, Color.White);
             }
+            _spriteBatch.End();
         }
     }
 }

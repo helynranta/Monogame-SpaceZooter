@@ -80,10 +80,19 @@ namespace SpaceShooter
         //draw method
         public void Draw(SpriteBatch _spriteBatch)
         {
+            BasicEffect particleEffect = game.basicEffect;
+            //world scale, no Z axis on particle
+            particleEffect.World = Matrix.CreateScale(1, 1, 0);
+            //grab view and projection from game and apply it to particle effect
+            particleEffect.View = game.view;
+            particleEffect.Projection = game.projection;
+            _spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, particleEffect);
+            //loop threw all particles in this system
             for (int index = 0; index < particles.Count; index++)
             {
-                particles[index].Draw(_spriteBatch, game);//draw each particle
+                particles[index].Draw(_spriteBatch, game, particleEffect);//draw each particle
             }
+            _spriteBatch.End();
         }
     }
 }
