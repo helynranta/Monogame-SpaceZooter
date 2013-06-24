@@ -29,6 +29,10 @@ namespace SpaceShooter
         public double lastShot; //time after last time player shot
         public float health;
         public HealthBar healthBar;
+        private int gunStage;
+        private int machinegunSides = 0;
+
+        public Vector3 gunPosition;
         #endregion
         //---------------main update for player--------------------//
         public void Initialize(Game1 g)
@@ -49,25 +53,86 @@ namespace SpaceShooter
             if (game.joystick_left.isPressed)
             {
                 angle = game.LookAt(new Vector3(game.joystick_left.anchorPos.X, -game.joystick_left.anchorPos.Y, 0),
-                    new Vector3(game.joystick_left.position.X, -game.joystick_left.position.Y, 0), angle, turnSpeed);
-                if (game.time >= lastShot+0.3f)
-                {
-                    Shoot();
-                    lastShot = game.time;
-                }
+                                    new Vector3(game.joystick_left.position.X, -game.joystick_left.position.Y, 0), angle, turnSpeed);
+                Shoot();
             }
+            position.Z = 0;
             healthBar.Update(health);
+            if (game.combo < 20){
+                gunStage = 1;
+            }else
+            {
+                if (game.combo > 100)
+                    gunStage = 3;
+                else
+                    gunStage = 2;
+            }
         }
         //-----------------calculate shooting action---------------//
         #region shooting and bullets
         public void Shoot()
         {
-            if (0.5 >= (angle - game.LookAt(position, aimSpot, angle, turnSpeed)))
+            //if cannon
+            if (gunStage == 1)
             {
-                Bullet bullet = new Bullet(position, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)), false, true);
-                bullet.Initialize(game, angle);
-                if (bullet != null)
-                    game.bulletArray.Add(bullet);
+                if (game.time >= lastShot + 0.3f)
+                {
+                    if (0.5 >= (angle - game.LookAt(position, aimSpot, angle, turnSpeed)))
+                    {
+                        Bullet bullet = new Bullet(position, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)), false, true);
+                        bullet.Initialize(game, angle);
+                        if (bullet != null)
+                            game.bulletArray.Add(bullet);
+                        lastShot = game.time;
+                    }
+                }
+            }//else we have machinegun
+            else if (gunStage == 2)
+            {
+                if (game.time >= lastShot + 0.1f)
+                {   //cannot use aimspot, messes up if not moving
+                    gunPosition = new Vector3(1.5f,1.5f,0);
+                    if(machinegunSides == 0){
+                        gunPosition = position - Vector3.Transform(gunPosition, Matrix.CreateRotationZ(angle - 2*MathHelper.ToRadians(45)));
+                        machinegunSides = 1;
+                    }
+                    else{
+                        gunPosition = position - Vector3.Transform(gunPosition, Matrix.CreateRotationZ(angle + MathHelper.ToRadians(45)));
+                        machinegunSides = 0;
+                    }
+                    Bullet bullet = new Bullet(gunPosition, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)), false, true);
+                    bullet.Initialize(game, angle);
+                    if (bullet != null)
+                        game.bulletArray.Add(bullet);
+                    lastShot = game.time;
+                }
+            }//else we have huge shield explosion
+            else if (gunStage == 3)
+            {
+                if (game.time >= lastShot + .06f)
+                {   //cannot use aimspot, messes up if not moving
+                    gunPosition = new Vector3(1.5f, 1.5f, 0);
+                    if (machinegunSides == 0)
+                    {
+                        gunPosition = position - Vector3.Transform(gunPosition, Matrix.CreateRotationZ(angle - 2 * MathHelper.ToRadians(45)));
+                        machinegunSides = 1;
+                    }
+                    else if(machinegunSides == 1)
+                    {
+                        gunPosition = position - Vector3.Transform(gunPosition, Matrix.CreateRotationZ(angle + MathHelper.ToRadians(45)));
+                        machinegunSides = 2;
+                    }
+                    else
+                    {
+                        gunPosition = position;
+                        machinegunSides = 0;
+                    }
+                    Bullet bullet = new Bullet(gunPosition, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)), false, true);
+                    bullet.Initialize(game, angle);
+                    if (bullet != null)
+                        game.bulletArray.Add(bullet);
+                    lastShot = game.time;
+                }
             }
         }
         #endregion
@@ -92,7 +157,7 @@ namespace SpaceShooter
                 {
                     effect.TextureEnabled = true;
                     effect.Texture = texture;
-                    effect.World = Matrix.CreateScale(.9f, 1, 1) * Matrix.CreateRotationZ(angle + MathHelper.ToRadians(-90f)) * Matrix.CreateTranslation(position);
+                    effect.World = Matrix.CreateScale(1, .9f, 1) * Matrix.CreateRotationZ(angle) * Matrix.CreateTranslation(position);
                     effect.View = game.view;
                     effect.Projection = game.projection;
                 }

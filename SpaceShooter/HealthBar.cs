@@ -24,8 +24,10 @@ namespace SpaceShooter
         }
         public void Update(float h)
         {
-            if (health > h)
+            if (health > h){
                 health--;
+                game.combo = 0;
+            }
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

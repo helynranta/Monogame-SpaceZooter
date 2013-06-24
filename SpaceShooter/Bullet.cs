@@ -41,9 +41,11 @@ namespace SpaceShooter
         }
         public void Update()
         {
-            if (spawnTime + 5 <= game.time)
+            if (spawnTime + 3 <= game.time)
             {
                 shouldDie = true;
+                ParticleEngine particleEngine = new ParticleEngine(game.particleTextures, position, game);
+                game.emitters.Add(particleEngine);
             }
             position.Z = 0;
             position -= flyDir*2;
@@ -57,6 +59,15 @@ namespace SpaceShooter
                 {
                     e.shouldDie = true;
                     shouldDie = true;
+                    game.combo++;
+                    game.lastHitCombo = (float)game.time;
+                    game.score += 50;
+                    game.score += 80;
+                    if (5 == game.random.Next(1, 10))
+                    {
+                        HeartPickup heart = new HeartPickup(e.position, game.heart, game.heartTexture);
+                        game.heartList.Add(heart);
+                    }
                 }
             }
             if (collideWithUfo)
@@ -67,15 +78,24 @@ namespace SpaceShooter
                     {
                         u.shouldDie = true;
                         shouldDie = true;
+                        game.combo++;
+                        game.lastHitCombo = (float)game.time;
+                        game.score += 80;
+                        if (5 == game.random.Next(1,10))
+                        {
+                            HeartPickup heart = new HeartPickup(u.position, game.heart, game.heartTexture);
+                            game.heartList.Add(heart);
+                        }
                     }
                 }
             }
             if (collideWithPlayer)
-            {
+            {//purkkaa
                 if (physicsBody.Intersects(game.player.physicsBody) || ((position - game.player.position).Length() < 1f))
                 {
                     shouldDie = true;
                     game.player.health -= 10;
+                    game.combo = 0;
                 }
             }
         }

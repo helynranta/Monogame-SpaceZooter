@@ -131,6 +131,7 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="HealthBar.cs" />
+    <Compile Include="HeartPickup.cs" />
     <Compile Include="Joystick.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="ParticleEngine.cs" />
@@ -170,6 +171,9 @@
     <Content Include="Content\ufo.xnb" />
     <Content Include="Content\ufo_diff.xnb" />
     <Content Include="Content\ufo_diff_0.xnb" />
+    <Content Include="Content\diffusePink.xnb" />
+    <Content Include="Content\diffusePink_0.xnb" />
+    <Content Include="Content\heart.xnb" />
     <None Include="SpaceShooter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

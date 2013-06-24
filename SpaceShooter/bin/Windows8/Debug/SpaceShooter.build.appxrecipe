@@ -130,6 +130,15 @@
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo_diff_0.xnb">
       <PackagePath>Content\ufo_diff_0.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diffusePink.xnb">
+      <PackagePath>Content\diffusePink.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diffusePink_0.xnb">
+      <PackagePath>Content\diffusePink_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\heart.xnb">
+      <PackagePath>Content\heart.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shieldTex.png">
       <PackagePath>shieldTex.png</PackagePath>
     </AppxPackagedFile>

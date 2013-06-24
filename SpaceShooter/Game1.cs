@@ -26,10 +26,10 @@ namespace SpaceShooter
         public Viewport _viewport; //variable for viewport
         public Random random = new Random();
         public Player player = new Player(); //create a new player
-        public Model bullet, satelliteModel, ufoModel;
+        public Model bullet, satelliteModel, ufoModel, heart;
         public BasicEffect basicEffect;
         public SpriteFont font; //font for debugging
-        public Texture2D bulletTexture,satelliteTexture,jsTexture, ufoTexture;
+        public Texture2D bulletTexture,satelliteTexture,jsTexture, ufoTexture, heartTexture;
         public Enemy enemy;
         public Ufo ufo;
         public List<Enemy> enemyList = new List<Enemy>();
@@ -49,7 +49,8 @@ namespace SpaceShooter
         //using our particlesystem
         public ParticleEngine particleEngine;
         public List<Texture2D> particleTextures = new List<Texture2D>();
-        private List<ParticleEngine> emitters = new List<ParticleEngine>();
+        public List<ParticleEngine> emitters = new List<ParticleEngine>();
+        public List<HeartPickup> heartList = new List<HeartPickup>();
         public Texture2D jsBackgroundTex { get; set; }
         public Model shieldModel;//simple uv unwrapped sphere
         public Texture2D shieldTexture;//awesome shield texture
@@ -58,9 +59,16 @@ namespace SpaceShooter
         public float satelliteCreateDelay = 7f;
         public float lastUfoSpawn;
         public float ufoCreateDelay = 10f;
+        public float score;
+        public int wave;
+        public int combo;
+        public float lastHitCombo;
         //music
         SoundEffectInstance musicInstance;
         public Texture2D healthBarTex;
+        //background Colors
+        public Color background;
+        public Color nextBackground;
         #endregion
 
         public Game1()
@@ -85,6 +93,8 @@ namespace SpaceShooter
             player.Initialize(this);
             _graphics.GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
             _graphics.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+            nextBackground = new Color(random.Next(150, 255), random.Next(150, 255), random.Next(150, 255));
+            background = new Color(0,0,0);
         }
         //-------------------Loading Content-----------------------//
         protected override void LoadContent()
@@ -109,6 +119,8 @@ namespace SpaceShooter
                 TextureEnabled = true,
                 VertexColorEnabled = true,
             };
+            heart = Content.Load<Model>("heart");
+            heartTexture = Content.Load<Texture2D>("diffusePink");
             //load particle staff
             //only one texture in this list atm...
             particleTextures.Add(Content.Load<Texture2D>("smoke2"));
@@ -132,7 +144,12 @@ namespace SpaceShooter
         //---------------------main game loop----------------------//
         protected override void Update(GameTime gameTime)
         {
-            
+            //handle combo actions
+            if (lastHitCombo + 2 < time)
+            {
+                combo = 0;
+            }
+  
             //check if escape is pressed, then exit the game
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
@@ -173,7 +190,8 @@ namespace SpaceShooter
                         emitter--;
                     }
                 }
-            }
+            }     
+            RandomBackground();
             updateBullets();
             base.Update(gameTime);
         }
@@ -204,7 +222,7 @@ namespace SpaceShooter
                 Enemy enemy = new Enemy(this, satelliteModel, satelliteTexture);
                 enemyList.Add(enemy);
                 lastSatelliteSpawn = (float)time;
-                if (satelliteCreateDelay > 0.8f)
+                if (satelliteCreateDelay > 0.6f)
                     satelliteCreateDelay -= 0.4f;
             }
             if (lastUfoSpawn + ufoCreateDelay <= (float)time)
@@ -212,7 +230,7 @@ namespace SpaceShooter
                 Ufo ufo = new Ufo(this, ufoModel, ufoTexture);
                 ufoList.Add(ufo);
                 lastUfoSpawn = (float)time;
-                if (ufoCreateDelay > 0.8f)
+                if (ufoCreateDelay > 0.6f)
                     ufoCreateDelay -= 0.2f;
             }
             //checksatellite updates
@@ -410,18 +428,64 @@ namespace SpaceShooter
             }
         }
 
+        public void RandomBackground(){
+            //check if Red value is close enough to randomize it again
+            if (background.R == nextBackground.R)
+            {
+                nextBackground = new Color(random.Next(150,255), nextBackground.G, nextBackground.B);
+            }
+            else
+            {//otherwise move it closer to target
+                if (nextBackground.R < background.R)
+                    background.R--;
+                else
+                    background.R++;
+            }
+            //do same for Green value
+            if (background.G == nextBackground.G)
+            {
+                nextBackground = new Color(nextBackground.R, random.Next(150, 255), nextBackground.B);
+            }
+            else
+            {
+                if (nextBackground.G < background.G)
+                    background.G--;
+                else
+                    background.G++;
+            }
+            //and blue
+            if (background.B == nextBackground.B)
+            {
+                nextBackground = new Color(nextBackground.R, nextBackground.G, random.Next(150, 255));
+            }
+            else
+            {
+                if (nextBackground.B < background.B)
+                    background.B--;
+                else
+                    background.B++;
+            }
+        }
         protected override void Draw(GameTime gameTime)
         {
-            _graphics.GraphicsDevice.Clear(Color.White);
+            _graphics.GraphicsDevice.Clear(background);
             _spriteBatch.Begin();
             //draw Joysticks
             joystick_right.Draw(_spriteBatch);
             joystick_left.Draw(_spriteBatch);
+            _spriteBatch.DrawString(font, "Combo: " + combo +"x", new Vector2(50,50), Color.Black);
+            _spriteBatch.DrawString(font, "Score: " + score, new Vector2(50, 75), Color.Black);
             _spriteBatch.End();
             player.Draw(_spriteBatch, font);
             
-            //DrawModel(shieldTexture, shieldModel, player.position, new Vector3(5, 5, 5));
-            
+            //draw hearts
+            if (heartList.Count > 0)
+            {
+                foreach (HeartPickup h in heartList)
+                {
+                    h.Draw(this);
+                }
+            }   
             //go and draw each enemy
             foreach (Enemy e in enemyList)
             {
