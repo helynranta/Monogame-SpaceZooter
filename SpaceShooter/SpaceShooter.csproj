@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Achievement.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="HealthBar.cs" />
@@ -174,6 +175,9 @@
     <Content Include="Content\diffusePink.xnb" />
     <Content Include="Content\diffusePink_0.xnb" />
     <Content Include="Content\heart.xnb" />
+    <Content Include="Content\anudaw.xnb" />
+    <Content Include="Content\planet.xnb" />
+    <Content Include="Content\healthBackground.xnb" />
     <None Include="SpaceShooter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

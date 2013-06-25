@@ -67,6 +67,8 @@ namespace SpaceShooter
                 else
                     gunStage = 2;
             }
+            if (health > 100)
+                health = 100;
         }
         //-----------------calculate shooting action---------------//
         #region shooting and bullets
@@ -140,13 +142,7 @@ namespace SpaceShooter
         #region drawing
         public void Draw(SpriteBatch _spriteBatch, SpriteFont font)
         {
-            healthBar.Draw(_spriteBatch);
             DrawModel();
-            foreach (Bullet b in game.bulletArray)
-            {
-                if (b != null)
-                    b.Draw();
-            }
         }
         //draw model function
         public void DrawModel()

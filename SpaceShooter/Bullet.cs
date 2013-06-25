@@ -61,8 +61,7 @@ namespace SpaceShooter
                     shouldDie = true;
                     game.combo++;
                     game.lastHitCombo = (float)game.time;
-                    game.score += 50;
-                    game.score += 80;
+                    game.score += 3*game.combo;
                     if (5 == game.random.Next(1, 10))
                     {
                         HeartPickup heart = new HeartPickup(e.position, game.heart, game.heartTexture);
@@ -80,7 +79,7 @@ namespace SpaceShooter
                         shouldDie = true;
                         game.combo++;
                         game.lastHitCombo = (float)game.time;
-                        game.score += 80;
+                        game.score += 5 * game.combo;
                         if (5 == game.random.Next(1,10))
                         {
                             HeartPickup heart = new HeartPickup(u.position, game.heart, game.heartTexture);

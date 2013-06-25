@@ -2,6 +2,7 @@ Assets\Logo.png
 Assets\SmallLogo.png
 Assets\SplashScreen.png
 Assets\StoreLogo.png
+Content\anudaw.xnb
 Content\datEnemy.xnb
 Content\datEnemyUV.xnb
 Content\datEnemyUV_0.xnb
@@ -10,12 +11,14 @@ Content\diffusePink.xnb
 Content\diffusePink_0.xnb
 Content\font.xnb
 Content\health.xnb
+Content\healthBackground.xnb
 Content\heart.xnb
 Content\joystick.xnb
 Content\joystick_background.xnb
 Content\lazeh.xnb
 Content\lazeh_uv.xnb
 Content\lazeh_uv_0.xnb
+Content\planet.xnb
 Content\shield.xnb
 Content\shieldTex.xnb
 Content\shieldTex_0.xnb

@@ -14,11 +14,21 @@ namespace SpaceShooter
         private Texture2D texture;
         public bool shouldDie = false;
         private float angle;
+        public BoundingBox boundingBox;
         public HeartPickup(Vector3 pos, Model m, Texture2D tex)
         {
             position = pos;
             model = m;
             texture = tex;
+        }
+        public void Update(Game1 game)
+        {
+            //if close enough to player, then he probaply touches, so pickup
+            if ((game.player.position - position).Length()<=3)
+            {
+                shouldDie = true;
+                game.player.health += 5;
+            }
         }
         public void Draw(Game1 game)
         {
