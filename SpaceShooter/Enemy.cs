@@ -62,6 +62,8 @@ namespace SpaceShooter
             {
                 shouldDie = true;
                 game.player.health -= 5;
+                game.hit.Play(0.8f, 0, 0);
+                game.combo = 0;
             }
         }
         //update collisions

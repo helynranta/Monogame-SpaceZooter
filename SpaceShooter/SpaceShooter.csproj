@@ -146,6 +146,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\SplashScreen.scale-180.png" />
     <Content Include="Content\spaceship.xnb" />
     <Content Include="Content\font.xnb" />
     <Content Include="Content\joystick.xnb" />
@@ -164,7 +167,6 @@
     <Content Include="shield.fbx" />
     <Content Include="Content\shield.xnb" />
     <Content Include="Content\shieldTex.xnb" />
-    <Content Include="Content\shieldTex_0.xnb" />
     <Content Include="Content\soundtrack.xnb" />
     <Content Include="Content\health.xnb" />
     <Content Include="Content\spaceship_diff.xnb" />
@@ -178,6 +180,15 @@
     <Content Include="Content\anudaw.xnb" />
     <Content Include="Content\planet.xnb" />
     <Content Include="Content\healthBackground.xnb" />
+    <Content Include="Content\done.xnb" />
+    <Content Include="Content\undone.xnb" />
+    <Content Include="Content\heartParticle.xnb" />
+    <Content Include="Content\AudioEnd.xnb" />
+    <Content Include="Content\AudioExplosion.xnb" />
+    <Content Include="Content\AudioHit.xnb" />
+    <Content Include="Content\AudioLaser.xnb" />
+    <Content Include="Content\AudioPickup.xnb" />
+    <Content Include="Content\shield_meter.xnb" />
     <None Include="SpaceShooter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

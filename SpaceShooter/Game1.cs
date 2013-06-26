@@ -29,7 +29,9 @@ namespace SpaceShooter
         public Model bullet, satelliteModel, ufoModel, heart;
         public BasicEffect basicEffect;
         public SpriteFont font; //font for debugging
-        public Texture2D bulletTexture, satelliteTexture, jsTexture, ufoTexture, heartTexture, shieldTexture, jsBackgroundTex, planet, healthBackground;
+        public Texture2D bulletTexture, healthBarTex, satelliteTexture, jsTexture, ufoTexture, heartTexture,
+            shieldTexture, jsBackgroundTex, planet, healthBackground, achDone, achNotDone, heartParticle,
+            shieldBar;
         public Enemy enemy;
         public Ufo ufo;
         public List<Enemy> enemyList = new List<Enemy>();
@@ -59,13 +61,14 @@ namespace SpaceShooter
         public float lastHitCombo, timeWhenDied, score, lastUfoSpawn, lastSatelliteSpawn;
         //music
         SoundEffectInstance musicInstance;
-        public Texture2D healthBarTex;
+        public SoundEffect lazer, explosion, hit, end, pickup;
         //background Colors
         public Color background;
         public Color nextBackground;
         public bool isPressed;
         //variables for menus
         public int gameStage=0;//0==menu, 1==game, 2==gameOverScreen
+
         #endregion
 
         public Game1()
@@ -92,6 +95,7 @@ namespace SpaceShooter
             _graphics.GraphicsDevice.BlendState = BlendState.AlphaBlend;
             nextBackground = new Color(random.Next(150, 255), random.Next(150, 255), random.Next(150, 255));
             background = new Color(0,0,0);
+            //create some achievements
         }
         //-------------------Loading Content-----------------------//
         protected override void LoadContent()
@@ -123,6 +127,7 @@ namespace SpaceShooter
             //load particle staff
             //only one texture in this list atm...
             particleTextures.Add(Content.Load<Texture2D>("smoke2"));
+            heartParticle = Content.Load<Texture2D>("heartParticle");
 
             shieldModel = Content.Load<Model>("shield");
             shieldTexture = Content.Load<Texture2D>("shieldTex");
@@ -131,10 +136,18 @@ namespace SpaceShooter
             musicInstance = music.CreateInstance();
             musicInstance.IsLooped = true;
             musicInstance.Play();
+            lazer = Content.Load<SoundEffect>("AudioLaser");
+            explosion = Content.Load<SoundEffect>("AudioExplosion");
+            pickup = Content.Load<SoundEffect>("AudioPickup");
+            end = Content.Load<SoundEffect>("AudioEnd");
+            hit = Content.Load<SoundEffect>("AudioHit");
             //healthbar texture
             healthBarTex = Content.Load<Texture2D>("health");
+            shieldBar = Content.Load<Texture2D>("shield_meter");
             planet = Content.Load<Texture2D>("planet");
             healthBackground = Content.Load<Texture2D>("healthBackground");
+            achDone = Content.Load<Texture2D>("done");
+            achNotDone = Content.Load<Texture2D>("undone");
         }
 
         protected override void UnloadContent()
@@ -162,6 +175,7 @@ namespace SpaceShooter
                 if (player.isPressed)
                     gameStage = 1;
             }
+            #region in-game
             //this one is for in-game
             else if (gameStage == 1)
             {
@@ -207,11 +221,12 @@ namespace SpaceShooter
                 {
                     for (int heart = 0; heart < heartList.Count; heart++)
                     {
-                        heartList[heart].Update(this);
+                        heartList[heart].Update();
                         if (heartList[heart].shouldDie)
                         {
                             heartList.RemoveAt(heart);
                             heart--;
+                            pickup.Play(0.8f,0,0);
                         }
                     }
                 }
@@ -222,11 +237,12 @@ namespace SpaceShooter
                     timeWhenDied = (float)time;
                 }
             }
+            #endregion
+            #region game-over
             //this one is gameover screen
             else if (gameStage == 2)
             {
-                //nothing to see here (yet, hopefully)
-                //kill all enemies
+
                 if (emitters.Count > 0)
                 {
                     for (int emitter = 0; emitter < emitters.Count; emitter++)
@@ -239,6 +255,17 @@ namespace SpaceShooter
                         }
                     }
                 }
+                //destory all existing hearts too
+                List<Texture2D> hearts = new List<Texture2D>();
+                hearts.Add(heartParticle);
+                for (int h = 0; h < heartList.Count; h++)
+                {
+                    ParticleEngine heartParticles = new ParticleEngine(hearts, heartList[h].position, this);
+                    emitters.Add(heartParticles);
+                    heartList.RemoveAt(h);
+                    h--;
+                }
+                //kill all satellites
                 for (int e = 0; e < enemyList.Count; e++)
                 {
                     particleEngine = new ParticleEngine(particleTextures, enemyList[e].position, this);
@@ -246,7 +273,7 @@ namespace SpaceShooter
                     enemyList.RemoveAt(e);
                     e--;
                     enemiesKilled++;
-                }
+                }//kill all UFOs
                 for (int u = 0; u < ufoList.Count; u++)
                 {
                     particleEngine = new ParticleEngine(particleTextures, ufoList[u].position, this);
@@ -262,7 +289,9 @@ namespace SpaceShooter
                 {
                     gameStage = 0;
                 }
+                end.Play(0.1f, -.5f,-.5f);
             }
+            #endregion
             base.Update(gameTime);
         }
         //-----------------------------------------//
@@ -335,7 +364,7 @@ namespace SpaceShooter
         }
         //<summary>
         //handles input (dah... -.-)
-        //TODO move joystick input to their own classes
+        //TODO move joystick input to their own classes (done woot)
         //</summary>
         private void HandleInput()
         {
@@ -425,29 +454,38 @@ namespace SpaceShooter
             if (gameStage == 0)
             {
                 _spriteBatch.Begin();
-                _spriteBatch.Draw(planet, new Rectangle((int)SCREEN_WIDTH / 2 - 300, (int)SCREEN_HEIGHT / 2 - 300, 600, 600), Color.White);
-                _spriteBatch.DrawString(font, "Awesome SpaceZooter Game", new Vector2(SCREEN_WIDTH/2-275, SCREEN_HEIGHT/2), Color.White);
-                _spriteBatch.DrawString(font, "tap to start game", new Vector2(SCREEN_WIDTH / 2 - 275, SCREEN_HEIGHT / 2 + 25), Color.White);
+                //_spriteBatch.Draw(planet, new Rectangle(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT), Color.White); 
+                _spriteBatch.DrawString(font, "Awesome SpaceZooter Game", new Vector2(SCREEN_WIDTH / 2 - 275, SCREEN_HEIGHT / 2), Color.Black);
+                _spriteBatch.DrawString(font, "tap to start game", new Vector2(SCREEN_WIDTH / 2 - 275, SCREEN_HEIGHT / 2 + 25), Color.Black);
                 _spriteBatch.End();
             }
             if (gameStage == 1)
             {
                 _spriteBatch.Begin();
+                //_spriteBatch.Draw(planet, new Rectangle(0, 0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT), Color.White); 
                 _spriteBatch.DrawString(font, "Combo: " + combo + "x", new Vector2(50, 50), Color.Black);
                 _spriteBatch.DrawString(font, "Score: " + score, new Vector2(50, 75), Color.Black);
+                if (combo > 15)
+                {
+                    if(combo < 50){
+                        _spriteBatch.DrawString(font, "get combo over 50 to use THREE (3)  FREKIN cannons! " + score, new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
+                    }       
+                    else
+                        _spriteBatch.DrawString(font, "AWESOME! KEEP IT UP, CHAMP!" + score, new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
+                }else
+                    _spriteBatch.DrawString(font, "get combo over 15 to use two (2) cannons " + score, new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
                 player.healthBar.Draw(_spriteBatch);
                 //draw Joysticks
                 joystick_right.Draw(_spriteBatch);
                 joystick_left.Draw(_spriteBatch);
-                _spriteBatch.Draw(planet, new Rectangle((int)SCREEN_WIDTH / 2 - 300, (int)SCREEN_HEIGHT / 2 - 300, 600, 600), Color.White);
                 _spriteBatch.End();
             }
             if (gameStage == 2)
             {
                 _spriteBatch.Begin();
-                _spriteBatch.Draw(planet, new Rectangle((int)SCREEN_WIDTH / 2 - 300, (int)SCREEN_HEIGHT / 2 - 300, 600, 600), Color.White);
-                _spriteBatch.DrawString(font, "Game Over, n00b!", new Vector2(SCREEN_WIDTH / 2 - 275, SCREEN_HEIGHT / 2), Color.White);
-                _spriteBatch.DrawString(font, "your pathedic score was " + score, new Vector2(SCREEN_WIDTH / 2 - 280, SCREEN_HEIGHT / 2+25), Color.White);
+               // _spriteBatch.Draw(planet, new Rectangle(0,0, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT), Color.White);
+                _spriteBatch.DrawString(font, "Game Over, n00b!", new Vector2(SCREEN_WIDTH / 2 - 275, SCREEN_HEIGHT / 2), Color.Black);
+                _spriteBatch.DrawString(font, "your pathetic score was " + score, new Vector2(SCREEN_WIDTH / 2 - 280, SCREEN_HEIGHT / 2+25), Color.Black);
                 _spriteBatch.End();
             }
             player.Draw(_spriteBatch, font);

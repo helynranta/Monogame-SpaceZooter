@@ -61,10 +61,11 @@ namespace SpaceShooter
                     shouldDie = true;
                     game.combo++;
                     game.lastHitCombo = (float)game.time;
+                    game.explosion.Play(0.1f, 0, 0);
                     game.score += 3*game.combo;
                     if (5 == game.random.Next(1, 10))
                     {
-                        HeartPickup heart = new HeartPickup(e.position, game.heart, game.heartTexture);
+                        HeartPickup heart = new HeartPickup(e.position, game.heart, game.heartTexture, game);
                         game.heartList.Add(heart);
                     }
                 }
@@ -80,9 +81,10 @@ namespace SpaceShooter
                         game.combo++;
                         game.lastHitCombo = (float)game.time;
                         game.score += 5 * game.combo;
+                        game.explosion.Play(0.1f, 0, 0);
                         if (5 == game.random.Next(1,10))
                         {
-                            HeartPickup heart = new HeartPickup(u.position, game.heart, game.heartTexture);
+                            HeartPickup heart = new HeartPickup(u.position, game.heart, game.heartTexture, game);
                             game.heartList.Add(heart);
                         }
                     }
@@ -95,6 +97,7 @@ namespace SpaceShooter
                     shouldDie = true;
                     game.player.health -= 10;
                     game.combo = 0;
+                    game.hit.Play(0.1f,0,0);
                 }
             }
         }

@@ -65,6 +65,8 @@ namespace SpaceShooter
             {
                 shouldDie = true;
                 game.player.health -= 5;
+                game.hit.Play(0.8f, 0, 0);
+                game.combo = 0;
             }
             if (lastShot + shootDelay < game.time)
             {
@@ -109,11 +111,6 @@ namespace SpaceShooter
                     enemySpeed += .01f;
         }
         public void Draw()
-        {
-            DrawModel(texture);
-        }
-        //draw model function
-        public void DrawModel(Texture2D texture)
         {
             foreach (ModelMesh mesh in model.Meshes)
             {

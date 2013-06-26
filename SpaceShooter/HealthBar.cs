@@ -26,7 +26,6 @@ namespace SpaceShooter
         {
             if (health > h){
                 health--;
-                game.combo = 0;
             }
             if (health < h)
             {
@@ -49,6 +48,17 @@ namespace SpaceShooter
                 Vector2 origin = new Vector2(texture.Width/2,texture.Height/2);
                 
                 _spriteBatch.Draw(texture, new Vector2(position.X+texture.Width/2*h, position.Y-(int)(0.5*h)), sourceRectangle, Color.White);
+            }
+            for (float h = 0; h < game.player.shieldHealth; h++)
+            {
+                Rectangle sourceRectangle = new Rectangle(0, 0, game.shieldBar.Width / 2, game.shieldBar.Height / 2 + (int)(0.5 * h));
+                Vector2 origin = new Vector2(game.shieldBar.Width / 2, game.shieldBar.Height / 2);
+
+                _spriteBatch.Draw(game.shieldBar, new Vector2(position.X + texture.Width / 2 * h, position.Y - (int)(0.5 * h)), sourceRectangle, Color.White);
+            }
+            if (game.player.shieldHealth > 1)
+            {
+                _spriteBatch.DrawString(game.font,"SHIELD - ACTIVATED", new Vector2(position.X + texture.Width+20, position.Y),new Color(230,250,225));
             }
         }
     }

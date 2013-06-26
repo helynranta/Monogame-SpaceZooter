@@ -9,9 +9,16 @@ namespace SpaceShooter
     public class Achievement
     {
         public bool isDone = false;
-        public Achievement()
+        public Achievement(Func<int, int> callBackFunction)
         {
 
+        }
+        public int KillEnemies(int value)
+        {
+            if (value >= 10)
+                return 1;
+            else
+                return 0;
         }
     }
 }
