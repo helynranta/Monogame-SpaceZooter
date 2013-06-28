@@ -1,6 +1,6 @@
 Monogame-SpaceZooter
 ====================
-Game was created in internship in Lappeenranta University of Technology in June 2013 by Lassi Lääti.
+Game was created during an internship in Lappeenranta University of Technology in June 2013 by Lassi Lääti.
 
 use either WASD or arrows to move, mouse to aim and shoot
 OR with tablet use joysticks
