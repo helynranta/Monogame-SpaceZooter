@@ -9,3 +9,5 @@ Game was created with Monogame and relies heavily in multiple tutorials over int
 links in tutorials can be found in source.
 
 use how you please
+
+Don´t push it, Coffee breaks FTW!
