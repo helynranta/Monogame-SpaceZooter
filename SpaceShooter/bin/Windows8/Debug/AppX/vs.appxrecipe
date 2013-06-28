@@ -5,28 +5,28 @@
     <WindowsUser>codecamp</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <RegisteredManifestChecksum>DB4514E1B49C6C9CECC03CABC0A1768F74B5062C678A5D14CCAB76BFDD377B8C</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>85b18687-33e7-435d-91e2-77039b764577_1.0.0.0_neutral__qj5ja5pefmqbr</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>85b18687-33e7-435d-91e2-77039b764577_qj5ja5pefmqbr!App</RegisteredUserModeAppID>
-    <RegisteredPackageID>85b18687-33e7-435d-91e2-77039b764577</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=codecamp</RegisteredPackagePublisher>
+    <RegisteredManifestChecksum>8AD0D1F8C955AD837051FB607CCEC645038F23AC9F31E26BD3AFA294BC15866E</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>16173lasshi.AwesomeSpaceFighter_1.0.0.0_neutral__0q49h5m1n06te</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>16173lasshi.AwesomeSpaceFighter_0q49h5m1n06te!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>16173lasshi.AwesomeSpaceFighter</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=7893F764-37AD-4521-B861-DE7E07855527</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-06-10T06:11:59.010</Modified>
+      <Modified>2013-06-28T09:10:40.238</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.exe">
       <PackagePath>SpaceShooter.exe</PackagePath>
-      <Modified>2013-06-10T06:11:58.882</Modified>
+      <Modified>2013-06-28T09:21:44.853</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\SpaceShooter.pdb">
       <PackagePath>SpaceShooter.pdb</PackagePath>
-      <Modified>2013-06-10T06:11:58.862</Modified>
+      <Modified>2013-06-28T09:21:44.819</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -88,49 +88,186 @@
       <PackagePath>SharpDX.XAudio2.xml</PackagePath>
       <Modified>2012-12-28T16:17:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship.xnb">
-      <PackagePath>Content\spaceship.xnb</PackagePath>
-      <Modified>2013-06-04T07:32:58.783</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_uv.xnb">
-      <PackagePath>Content\spaceship_uv.xnb</PackagePath>
-      <Modified>2013-06-04T07:32:58.758</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\font.xnb">
-      <PackagePath>Content\font.xnb</PackagePath>
-      <Modified>2013-06-04T09:58:07.679</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick.xnb">
-      <PackagePath>Content\joystick.xnb</PackagePath>
-      <Modified>2013-06-06T05:45:29.530</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick_background.xnb">
-      <PackagePath>Content\joystick_background.xnb</PackagePath>
-      <Modified>2013-06-06T05:45:29.532</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-01-06T11:37:42.000</Modified>
+      <Modified>2013-06-28T06:46:21.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SmallLogo.png">
       <PackagePath>Assets\SmallLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-01-06T11:37:42.000</Modified>
+      <Modified>2013-06-28T06:43:25.449</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-01-06T11:37:42.000</Modified>
+      <Modified>2013-06-26T11:03:39.096</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-01-06T11:37:42.000</Modified>
+      <Modified>2013-06-28T06:03:45.614</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\WideLogo.png">
+      <PackagePath>Assets\WideLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-06-28T06:48:14.988</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shieldTex.png">
+      <PackagePath>shieldTex.png</PackagePath>
+      <Modified>2013-06-19T10:39:40.090</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship.xnb">
+      <PackagePath>Content\spaceship.xnb</PackagePath>
+      <Modified>2013-06-24T06:53:50.993</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\font.xnb">
+      <PackagePath>Content\font.xnb</PackagePath>
+      <Modified>2013-06-11T06:53:30.311</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick.xnb">
+      <PackagePath>Content\joystick.xnb</PackagePath>
+      <Modified>2013-06-11T06:53:30.313</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick_background.xnb">
+      <PackagePath>Content\joystick_background.xnb</PackagePath>
+      <Modified>2013-06-19T07:01:09.948</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv.xnb">
+      <PackagePath>Content\lazeh_uv.xnb</PackagePath>
+      <Modified>2013-06-12T06:36:47.531</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh.xnb">
+      <PackagePath>Content\lazeh.xnb</PackagePath>
+      <Modified>2013-06-12T06:36:47.664</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv_0.xnb">
+      <PackagePath>Content\lazeh_uv_0.xnb</PackagePath>
+      <Modified>2013-06-12T06:36:47.680</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diamond.xnb">
+      <PackagePath>Content\diamond.xnb</PackagePath>
+      <Modified>2013-06-17T06:09:08.978</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\smoke2.xnb">
+      <PackagePath>Content\smoke2.xnb</PackagePath>
+      <Modified>2013-06-18T06:01:52.951</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemy.xnb">
+      <PackagePath>Content\datEnemy.xnb</PackagePath>
+      <Modified>2013-06-19T06:57:13.676</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemyUV.xnb">
+      <PackagePath>Content\datEnemyUV.xnb</PackagePath>
+      <Modified>2013-06-19T06:57:13.419</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemyUV_0.xnb">
+      <PackagePath>Content\datEnemyUV_0.xnb</PackagePath>
+      <Modified>2013-06-19T06:57:14.017</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shield.xnb">
+      <PackagePath>Content\shield.xnb</PackagePath>
+      <Modified>2013-06-26T10:15:25.154</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shieldTex.xnb">
+      <PackagePath>Content\shieldTex.xnb</PackagePath>
+      <Modified>2013-06-26T10:24:51.771</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\soundtrack.xnb">
+      <PackagePath>Content\soundtrack.xnb</PackagePath>
+      <Modified>2013-06-20T05:38:59.713</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\health.xnb">
+      <PackagePath>Content\health.xnb</PackagePath>
+      <Modified>2013-06-20T05:45:18.214</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_diff.xnb">
+      <PackagePath>Content\spaceship_diff.xnb</PackagePath>
+      <Modified>2013-06-20T06:45:04.425</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_diff_0.xnb">
+      <PackagePath>Content\spaceship_diff_0.xnb</PackagePath>
+      <Modified>2013-06-20T06:45:04.433</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo.xnb">
+      <PackagePath>Content\ufo.xnb</PackagePath>
+      <Modified>2013-06-20T09:21:43.965</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo_diff.xnb">
+      <PackagePath>Content\ufo_diff.xnb</PackagePath>
+      <Modified>2013-06-20T09:21:45.349</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo_diff_0.xnb">
+      <PackagePath>Content\ufo_diff_0.xnb</PackagePath>
+      <Modified>2013-06-20T09:21:45.718</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diffusePink.xnb">
+      <PackagePath>Content\diffusePink.xnb</PackagePath>
+      <Modified>2013-06-24T10:04:53.124</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diffusePink_0.xnb">
+      <PackagePath>Content\diffusePink_0.xnb</PackagePath>
+      <Modified>2013-06-24T10:04:53.128</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\heart.xnb">
+      <PackagePath>Content\heart.xnb</PackagePath>
+      <Modified>2013-06-24T10:04:53.131</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\anudaw.xnb">
+      <PackagePath>Content\anudaw.xnb</PackagePath>
+      <Modified>2013-06-25T05:43:22.006</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\planet.xnb">
+      <PackagePath>Content\planet.xnb</PackagePath>
+      <Modified>2013-06-26T09:00:49.031</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\healthBackground.xnb">
+      <PackagePath>Content\healthBackground.xnb</PackagePath>
+      <Modified>2013-06-25T09:32:11.974</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\done.xnb">
+      <PackagePath>Content\done.xnb</PackagePath>
+      <Modified>2013-06-26T06:32:01.554</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\undone.xnb">
+      <PackagePath>Content\undone.xnb</PackagePath>
+      <Modified>2013-06-26T06:32:01.554</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\heartParticle.xnb">
+      <PackagePath>Content\heartParticle.xnb</PackagePath>
+      <Modified>2013-06-26T06:55:01.732</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioEnd.xnb">
+      <PackagePath>Content\AudioEnd.xnb</PackagePath>
+      <Modified>2013-06-26T07:03:06.813</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioExplosion.xnb">
+      <PackagePath>Content\AudioExplosion.xnb</PackagePath>
+      <Modified>2013-06-26T07:03:06.814</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioHit.xnb">
+      <PackagePath>Content\AudioHit.xnb</PackagePath>
+      <Modified>2013-06-26T07:03:06.816</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioLaser.xnb">
+      <PackagePath>Content\AudioLaser.xnb</PackagePath>
+      <Modified>2013-06-26T07:03:06.818</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioPickup.xnb">
+      <PackagePath>Content\AudioPickup.xnb</PackagePath>
+      <Modified>2013-06-26T07:03:06.820</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shield_meter.xnb">
+      <PackagePath>Content\shield_meter.xnb</PackagePath>
+      <Modified>2013-06-26T09:33:58.975</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shield.fbx">
+      <PackagePath>shield.fbx</PackagePath>
+      <Modified>2013-06-19T10:39:40.086</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-06-07T12:28:56.251</Modified>
+      <Modified>2013-06-28T09:10:40.154</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

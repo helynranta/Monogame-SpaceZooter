@@ -28,7 +28,7 @@ namespace SpaceShooter
         public void Update()
         {
             //if close enough to player, then he probaply touches, so pickup
-            if ((game.player.position - position).Length()<=3)
+            if ((game.player.position - position).Length()<=5)
             {
                 shouldDie = true;
                 game.player.health += 5;

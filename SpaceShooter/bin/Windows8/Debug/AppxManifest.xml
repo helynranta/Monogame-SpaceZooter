@@ -7,10 +7,10 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="85b18687-33e7-435d-91e2-77039b764577" Publisher="CN=codecamp" Version="1.0.0.0" ProcessorArchitecture="neutral" />
+  <Identity Name="16173lasshi.AwesomeSpaceFighter" Publisher="CN=7893F764-37AD-4521-B861-DE7E07855527" Version="1.0.0.0" ProcessorArchitecture="neutral" />
   <Properties>
-    <DisplayName>SpaceShooter</DisplayName>
-    <PublisherDisplayName>codecamp</PublisherDisplayName>
+    <DisplayName>Awesome SpaceFighter</DisplayName>
+    <PublisherDisplayName>lasshi</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -23,7 +23,7 @@
   <Applications>
     <Application Id="App" Executable="SpaceShooter.exe" EntryPoint="SpaceShooter.App">
       <VisualElements DisplayName="SpaceShooter" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="SpaceShooter" ForegroundText="light" BackgroundColor="#464646">
-        <DefaultTile ShowName="allLogos" />
+        <DefaultTile ShowName="logoOnly" ShortName="Awesome SpaceFighter" WideLogo="Assets\WideLogo.png" />
         <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#404040" />
         <InitialRotationPreference>
           <Rotation Preference="landscape" />

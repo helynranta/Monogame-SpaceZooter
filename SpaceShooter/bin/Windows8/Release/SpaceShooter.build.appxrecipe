@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>WIN-IJ22OAOI5UT</Machine>
+    <WindowsUser>codecamp</WindowsUser>
+    <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\SpaceShooter.exe">
+      <PackagePath>SpaceShooter.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\SpaceShooter.pdb">
+      <PackagePath>SpaceShooter.pdb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.dll">
+      <PackagePath>MonoGame.Framework.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.Direct2D1.dll">
+      <PackagePath>SharpDX.Direct2D1.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.Direct3D11.dll">
+      <PackagePath>SharpDX.Direct3D11.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.dll">
+      <PackagePath>SharpDX.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.DXGI.dll">
+      <PackagePath>SharpDX.DXGI.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.MediaFoundation.dll">
+      <PackagePath>SharpDX.MediaFoundation.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.XAudio2.dll">
+      <PackagePath>SharpDX.XAudio2.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.XInput.dll">
+      <PackagePath>SharpDX.XInput.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.xml">
+      <PackagePath>SharpDX.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.XInput.xml">
+      <PackagePath>SharpDX.XInput.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.Direct2D1.xml">
+      <PackagePath>SharpDX.Direct2D1.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.Direct3D11.xml">
+      <PackagePath>SharpDX.Direct3D11.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.DXGI.xml">
+      <PackagePath>SharpDX.DXGI.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.MediaFoundation.xml">
+      <PackagePath>SharpDX.MediaFoundation.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\SharpDX.XAudio2.xml">
+      <PackagePath>SharpDX.XAudio2.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Assets\WideLogo.png">
+      <PackagePath>Assets\WideLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shieldTex.png">
+      <PackagePath>shieldTex.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship.xnb">
+      <PackagePath>Content\spaceship.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\font.xnb">
+      <PackagePath>Content\font.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick.xnb">
+      <PackagePath>Content\joystick.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\joystick_background.xnb">
+      <PackagePath>Content\joystick_background.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv.xnb">
+      <PackagePath>Content\lazeh_uv.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh.xnb">
+      <PackagePath>Content\lazeh.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\lazeh_uv_0.xnb">
+      <PackagePath>Content\lazeh_uv_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diamond.xnb">
+      <PackagePath>Content\diamond.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\smoke2.xnb">
+      <PackagePath>Content\smoke2.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemy.xnb">
+      <PackagePath>Content\datEnemy.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemyUV.xnb">
+      <PackagePath>Content\datEnemyUV.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\datEnemyUV_0.xnb">
+      <PackagePath>Content\datEnemyUV_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shield.xnb">
+      <PackagePath>Content\shield.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shieldTex.xnb">
+      <PackagePath>Content\shieldTex.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\soundtrack.xnb">
+      <PackagePath>Content\soundtrack.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\health.xnb">
+      <PackagePath>Content\health.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_diff.xnb">
+      <PackagePath>Content\spaceship_diff.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\spaceship_diff_0.xnb">
+      <PackagePath>Content\spaceship_diff_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo.xnb">
+      <PackagePath>Content\ufo.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo_diff.xnb">
+      <PackagePath>Content\ufo_diff.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\ufo_diff_0.xnb">
+      <PackagePath>Content\ufo_diff_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diffusePink.xnb">
+      <PackagePath>Content\diffusePink.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\diffusePink_0.xnb">
+      <PackagePath>Content\diffusePink_0.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\heart.xnb">
+      <PackagePath>Content\heart.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\anudaw.xnb">
+      <PackagePath>Content\anudaw.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\planet.xnb">
+      <PackagePath>Content\planet.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\healthBackground.xnb">
+      <PackagePath>Content\healthBackground.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\done.xnb">
+      <PackagePath>Content\done.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\undone.xnb">
+      <PackagePath>Content\undone.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\heartParticle.xnb">
+      <PackagePath>Content\heartParticle.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioEnd.xnb">
+      <PackagePath>Content\AudioEnd.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioExplosion.xnb">
+      <PackagePath>Content\AudioExplosion.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioHit.xnb">
+      <PackagePath>Content\AudioHit.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioLaser.xnb">
+      <PackagePath>Content\AudioLaser.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\AudioPickup.xnb">
+      <PackagePath>Content\AudioPickup.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\Content\shield_meter.xnb">
+      <PackagePath>Content\shield_meter.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\shield.fbx">
+      <PackagePath>shield.fbx</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

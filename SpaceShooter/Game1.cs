@@ -14,8 +14,7 @@ using System.ServiceModel;
 using SpaceShooter;
 using Microsoft.Xna.Framework.Audio;
 
-//wednesday?
-//Test comment
+
 namespace SpaceShooter
 {
     public class Game1 : Game
@@ -59,15 +58,17 @@ namespace SpaceShooter
         public float ufoCreateDelay = 6f;
         public int combo;
         public float lastHitCombo, timeWhenDied, score, lastUfoSpawn, lastSatelliteSpawn;
+        public bool usingKeyboard;
         //music
         SoundEffectInstance musicInstance;
         public SoundEffect lazer, explosion, hit, end, pickup;
         //background Colors
         public Color background;
         public Color nextBackground;
-        public bool isPressed;
         //variables for menus
         public int gameStage=0;//0==menu, 1==game, 2==gameOverScreen
+        public bool mouseClicking;
+        public bool usingMouse;
 
         #endregion
 
@@ -172,7 +173,9 @@ namespace SpaceShooter
             //if we are in menu
             if (gameStage == 0)
             {
-                if (player.isPressed)
+                score = 0;
+                combo = 0;
+                if (player.isPressed || mouseClicking)
                     gameStage = 1;
             }
             #region in-game
@@ -282,14 +285,14 @@ namespace SpaceShooter
                     u--;
                     enemiesKilled++;
                 }
-                player.health = 100;
-                satelliteCreateDelay = 4f;
-                ufoCreateDelay = 6f;
                 if (timeWhenDied + 5 <= time)
                 {
                     gameStage = 0;
                 }
                 end.Play(0.1f, -.5f,-.5f);
+                player.health = 100;
+                satelliteCreateDelay = 4f;
+                ufoCreateDelay = 6f;
             }
             #endregion
             base.Update(gameTime);
@@ -368,18 +371,52 @@ namespace SpaceShooter
         //</summary>
         private void HandleInput()
         {
+            #region keyboard and mouse awesomeness
+            //in case we have keyboard and mouse, i got it covered
+            KeyboardState keyState = Keyboard.GetState();
+            if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
+            {
+                player.position.X -= 0.3f;
+            }
+            if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
+            {
+                player.position.X += 0.3f;
+            }
+            if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
+            {
+                player.position.Y += 0.3f;
+            }
+            if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
+            {
+                player.position.Y -= 0.3f;
+            }
             MouseState currentMouseState = Mouse.GetState();//get mouse state
             mousePosition = new Vector2(currentMouseState.X, currentMouseState.Y);//mouse position
             TouchCollection touches = TouchPanel.GetState(); //touchstates blahblah
+            //if having mouse, do all this
+            Vector3 mousePos1 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 100), projection, view, world);
+            Vector3 mousePos2 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 0), projection, view, world);
+            mouseInWorld = 1000 * (mousePos2 - mousePos1);
+            mouseInWorld.Z = 0; //just clearing that touch plane is always z=0
+            if (currentMouseState.LeftButton == ButtonState.Pressed)
+            {
+                player.aimSpot = mouseInWorld;
+                mouseClicking = true;
+                usingMouse = true;
+            }else{
+                mouseClicking = false;
+            }
+
+            #endregion
             //to the good part....
             foreach (var touch in touches)
             {
                 //copy touch position to mouse position
                 mousePosition = touch.Position;
                 //project touch from 2d to 3d world
-                Vector3 pos1 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 100), projection, view, world);
-                Vector3 pos2 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 0), projection, view, world);
-                mouseInWorld = 1000*(pos2 - pos1);
+                Vector3 touchPos1 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 100), projection, view, world);
+                Vector3 touchPos2 = _viewport.Unproject(new Vector3(mousePosition.X, mousePosition.Y, 0), projection, view, world);
+                mouseInWorld = 1000*(touchPos2 - touchPos1);
                 mouseInWorld.Z = 0; //just clearing that touch plane is always z=0
                 
                 joystick_left.Update(mousePosition, touch);
@@ -468,16 +505,19 @@ namespace SpaceShooter
                 if (combo > 15)
                 {
                     if(combo < 50){
-                        _spriteBatch.DrawString(font, "get combo over 50 to use THREE (3)  FREKIN cannons! " + score, new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
+                        _spriteBatch.DrawString(font, "get combo over 50 to use THREE (3)  FREKIN cannons! ", new Vector2(SCREEN_WIDTH / 2 - 290, 25), Color.Black);
                     }       
                     else
-                        _spriteBatch.DrawString(font, "AWESOME! KEEP IT UP, CHAMP!" + score, new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
+                        _spriteBatch.DrawString(font, "AWESOME! KEEP IT UP, CHAMP!", new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
                 }else
-                    _spriteBatch.DrawString(font, "get combo over 15 to use two (2) cannons " + score, new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
+                    _spriteBatch.DrawString(font, "get combo over 15 to use two (2) cannons ", new Vector2(SCREEN_WIDTH / 2 - 280, 25), Color.Black);
                 player.healthBar.Draw(_spriteBatch);
-                //draw Joysticks
-                joystick_right.Draw(_spriteBatch);
-                joystick_left.Draw(_spriteBatch);
+                if (!usingMouse)
+                {
+                    //draw Joysticks
+                    joystick_right.Draw(_spriteBatch);
+                    joystick_left.Draw(_spriteBatch);
+                }
                 _spriteBatch.End();
             }
             if (gameStage == 2)

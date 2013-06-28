@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl' href='C:\ProgramData\Windows App Certification Kit\results.xsl'?>
+<REPORT OVERALL_RESULT="PASS" VERSION="2.2" LATEST_VERSION="TRUE" UPDATE_DOWNLOAD_URL="" TOOLSET_ARCHITECTURE="X64" SecureBoot="FALSE" APP_TYPE="WindowsStore" PUBLISHER_DISPLAY_NAME="lasshi" OSVERSION="6.2.9200.0" OS="Microsoft Windows 8 Enterprise" PER_USER_APPLICATION="" PARTIAL_RUN="FALSE" LCID="1033" VALIDATION_TYPE="CommandLine" ReportGenerationTime="6/28/2013 12:34:15 PM" ID="952cb2f1c2e224699afd1fc45d166c9a">
+  <REQUIREMENTS>
+    <REQUIREMENT NUMBER="1" TITLE="Clean reversible install test" RATIONALE="A clean, reversible, installation allows users to successfully manage (deploy, and remove) applications on their system." />
+    <REQUIREMENT NUMBER="2" TITLE="Install to the correct folders test" RATIONALE="Windows provides specific locations in the file system to store programs and software components, shared application data, and application data specific to a user." />
+    <REQUIREMENT NUMBER="3" TITLE="Digitally signed file test" RATIONALE="An Authenticode digital signature allows users to be sure that the software is genuine. It also allows detection if a file has been tampered with e.g. infected by a virus." />
+    <REQUIREMENT NUMBER="4" TITLE="Support x64 Windows test" RATIONALE="To maintain compatibility with 64-bit versions of Windows, it is necessary that applications should natively support 64-bit or at minimum 32-bit Windows based applications to run seamlessly on 64-bit." />
+    <REQUIREMENT NUMBER="5" TITLE="OS version checking test" RATIONALE="Applications must not perform version checks for equality (== 5.1). If you need a specific feature, check whether the feature is available. If you need Windows XP, check for Windows XP or later (&gt;= 5.1), This way, your detection code will continue to work on future versions of Windows. Driver installers and uninstall modules should never check the OS version." />
+    <REQUIREMENT NUMBER="6" TITLE="User account control (UAC) test" RATIONALE="Most applications do not require administrator privileges at run time, and should be just fine running as a standard-user. Windows applications must have a manifest (embedded or external) to define its execution level that tells OS the privileges needed to run the application." />
+    <REQUIREMENT NUMBER="7" TITLE="Adhere to system restart manager messages" RATIONALE="In a critical shutdown, applications that return FALSE to WM_QUERYENDSESSION will be sent WM_ENDSESSION and closed, while those that time out in response to WM_QUERYENDSESSION will be terminated." />
+    <REQUIREMENT NUMBER="8" TITLE="Safe mode test" RATIONALE="By default, most drivers and services that did not come preinstalled with Windows are not started in Safe Mode. They should remain disabled unless they are needed for basic operations of the system or for diagnostic and recovery purposes." />
+    <REQUIREMENT NUMBER="9" TITLE="Multiuser session test" RATIONALE="Windows users should be able to run concurrent sessions without conflict or disruption.  Applications must ensure that when running in multiple sessions either locally or remotely, the normal functionality of the application should not be impacted. Application settings and data files should not be persisted across users. A user’s privacy and preferences should be isolated to the user’s session." />
+    <REQUIREMENT NUMBER="10" TITLE="Crashes and hangs test" RATIONALE="Application failures such as crashes and hangs are a major disruption to users and cause frustration. Eliminating such failures improves application stability and reliability, and overall, provides users with a better application experience.">
+      <TEST INDEX="47" NAME="App launch tests" DESCRIPTION="App launch tests." EXECUTIONTIME="00h:00m:21s.79ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="21" NAME="Crashes and hangs" DESCRIPTION="Do not crash or hang during the testing process." EXECUTIONTIME="00h:00m:03s.97ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="11" TITLE="Compatibility and resiliency test" RATIONALE="When Windows detects that an application has operated in an incompatible manner, it applies a compatibility fix that causes the application to behave correctly, ensuring a positive user experience. Applications should not rely on this behavior since it is only provided to allow legacy applications to work correctly on Windows." />
+    <REQUIREMENT NUMBER="12" TITLE="App manifest compliance test" RATIONALE="The package manifest was missing one or more required attributes.">
+      <TEST INDEX="31" NAME="App manifest" DESCRIPTION="App manifest must include valid entries for all required fields." EXECUTIONTIME="00h:00m:02s.12ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="13" TITLE="Windows security best practices test" RATIONALE="An application should not change the default Windows security settings." />
+    <REQUIREMENT NUMBER="14" TITLE="Windows security features test" RATIONALE="Applications must opt-into Windows security features.">
+      <TEST INDEX="33" NAME="Binary analyzer" DESCRIPTION="Analysis of security features enabled on binaries" EXECUTIONTIME="00h:00m:01s.64ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="62" NAME="Private Code Signing" DESCRIPTION="App should not package private code signing key files." EXECUTIONTIME="00h:00m:01s.11ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="15" TITLE="Supported API test" RATIONALE="The application should only refer to the APIs allowed by the Windows SDK for Windows Store Apps.">
+      <TEST INDEX="38" NAME="Supported APIs" DESCRIPTION="Windows Store App must only use supported platform APIs." EXECUTIONTIME="00h:00m:02s.98ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="17" TITLE="Performance test" RATIONALE="The application should have a fast and responsive launch and suspend experience while consuming a reasonable amount of system resources (CPU, File IO, Memory etc.) to enable fast switching and multitasking between previously unopened applications.">
+      <TEST INDEX="50" NAME="Bytecode generation" DESCRIPTION="Byte code generation should be able to complete successfully for packages containing an HTML5 Windows Store app." EXECUTIONTIME="00h:00m:01s.31ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="60" NAME="Optimized Binding References" DESCRIPTION="When using bindings, WinJS.Binding.optimizeBindingReferences should be set to true to optimize the memory usage." EXECUTIONTIME="00h:00m:01s.48ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="43" NAME="Performance launch" DESCRIPTION="Application should have a responsive launch time with reasonable CPU, File IO and Memory usage" EXECUTIONTIME="00h:01m:23s.49ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="44" NAME="Performance suspend" DESCRIPTION="Application should have a responsive suspend with reasonable CPU and File IO usage" EXECUTIONTIME="00h:01m:20s.43ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="19" TITLE="App manifest resources test" RATIONALE="The Appx Package Manifest should have valid resources defined in the resources.pri file, as per the Appx Packaging Specification and Appx Manifest Schema.">
+      <TEST INDEX="45" NAME="App resources validation" DESCRIPTION="The package should have valid resources defined in the resources.pri file." EXECUTIONTIME="00h:00m:00s.67ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="61" NAME="Branding validation" DESCRIPTION="App should not use the default images packed by windows SDK samples or Visual Studio." EXECUTIONTIME="00h:00m:02s.02ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="20" TITLE="Debug configuration test" RATIONALE="The App should not install any debug binaries.">
+      <TEST INDEX="46" NAME="Debug configuration" DESCRIPTION="The App should not install any debug binaries." EXECUTIONTIME="00h:00m:02s.39ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="21" TITLE="File encoding" RATIONALE="Packages containing an HTML5 Windows Store app must have correct file encoding.">
+      <TEST INDEX="49" NAME="UTF-8 file encoding" DESCRIPTION="Packages containing an HTML5 Windows Store app must have correct file encoding." EXECUTIONTIME="00h:00m:01s.29ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="22" TITLE="Direct3D feature level support" RATIONALE="Applications must render content on Direct3D feature level 9.1 hardware.">
+      <TEST INDEX="51" NAME="Direct3D feature level support" DESCRIPTION="Applications must render content on Direct3D feature level 9.1 hardware." EXECUTIONTIME="00h:00m:12s.63ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="23" TITLE="App Capabilities test" RATIONALE="Packages declaring special-use capabilities will have to provide justifications during the onboarding process.">
+      <TEST INDEX="52" NAME="Special Use Capabilities" DESCRIPTION="Packages declaring special-use capabilities will have to provide justifications during the onboarding process." EXECUTIONTIME="00h:00m:01s.29ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="24" TITLE="Windows Runtime metadata validation" RATIONALE="Metadata needs to be conformant and consistent across all generation sources.">
+      <TEST INDEX="56" NAME="ExclusiveTo attribute test" DESCRIPTION="A class must not implement an interface that is marked ExclusiveTo another class." EXECUTIONTIME="00h:00m:01s.19ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="57" NAME="Type location test" DESCRIPTION="Types must be defined in the metadata file with the longest matching namespace." EXECUTIONTIME="00h:00m:00s.60ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="55" NAME="Type name case-sensitivity test" DESCRIPTION="Namespace and type names must not vary only by casing." EXECUTIONTIME="00h:00m:00s.64ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="54" NAME="Type name correctness test" DESCRIPTION="Only system types can be in the Windows namespace and no types can be in the global namespace." EXECUTIONTIME="00h:00m:00s.66ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="58" NAME="General metadata correctness test" DESCRIPTION="Metadata files must meet various requirements in order to be valid and correct." EXECUTIONTIME="00h:00m:01s.06ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="53" NAME="Properties test" DESCRIPTION="Write-only and indexer properties may not be used. Corresponding getter and setter methods must match in type." EXECUTIONTIME="00h:00m:00s.61ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+  </REQUIREMENTS>
+  <APPLICATIONS>
+    <Installed_Programs>
+      <Program Name="16173lasshi.AwesomeSpaceFighter" Type="Application" Source="AppxPackage" Publisher="CN=7893F764-37AD-4521-B861-DE7E07855527" Version="1.1.0.2" Language="1033" OnSystemDrive="true" RootDirPath="C:\Program Files\WindowsApps\16173lasshi.AwesomeSpaceFighter_1.1.0.2_neutral__0q49h5m1n06te" PathEvidenceId="0x16cd" RNP="0x1" DNP="0xd" EvidenceId="0x16cd" Id="0000679ba7076ffa57a26b0b8301e37d79e600000904">
+        <Indicators>
+          <DirectoryIndicators>
+            <Directory Name="16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x9" DNP="0xb" UniqueId="0x16ce" Id="0000541416064364a7ff34bfb204310bb2b4cd39e7aa" />
+          </DirectoryIndicators>
+          <PackageManifestIndicator>
+            <PackageManifest PackageFullName="16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" />
+            <Identity Name="16173lasshi.AwesomeSpaceFighter" Publisher="CN=7893F764-37AD-4521-B861-DE7E07855527" Version="1.1.0.2" ProcessorArchitecture="neutral" />
+            <Properties>
+              <DisplayName>Awesome SpaceFighter</DisplayName>
+              <PublisherDisplayName>lasshi</PublisherDisplayName>
+              <Logo>Assets\StoreLogo.png</Logo>
+            </Properties>
+            <Resources>
+              <Resource Language="EN-US" />
+            </Resources>
+            <Prerequisites>
+              <OSMinVersion>6.2.1</OSMinVersion>
+              <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+            </Prerequisites>
+          </PackageManifestIndicator>
+        </Indicators>
+        <StaticProperties>
+          <Files Id="00008dc83eb33ee1ce280f27edc327cb59bdd215053b">
+            <File Name="SharpDX.MediaFoundation.dll" Id="00005f8101e434ec6b36939349abf3bd69010aed2d78" ProductName="SharpDX.MediaFoundation" CompanyName="Alexandre Mutel" ProductVersion="2.4.2" VerLanguage="0" ShortName="SHARPD~4.DLL" SwitchBackContext="0x0100000000000400" FileVersion="2.4.2" Size="0x28c00" SizeOfImage="0x30000" PeHeaderHash="010179cfda4a003e21e678a785c6639cb3a5eafda5c2" PeChecksum="0x2f960" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="2.4.2.0" BinFileVersion="2.4.2.0" FileDescription="SharpDX.MediaFoundation" InternalName="SharpDX.MediaFoundation.dll" LegalCopyright="Copyright © 2010-2012 Alexandre Mutel" LinkerVersion="8.0" LinkDate="12/21/2012 15:00:03" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SharpDX.MediaFoundation.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\sharpdx.mediafoundation.dll" LongPathHash="00007b91dc66c3ed38bee46ac9ac262aeda92f5a24a4" UniqueId="0x16d4" />
+            <File Name="SharpDX.XAudio2.dll" Id="0000f258ef4cc44b8a8709c62078c4a4ff6c474df910" ProductName="SharpDX.XAudio2" CompanyName="Alexandre Mutel" ProductVersion="2.4.2" VerLanguage="0" ShortName="SHBD7E~1.DLL" SwitchBackContext="0x0100000000000400" FileVersion="2.4.2" Size="0x10400" SizeOfImage="0x16000" PeHeaderHash="0101750547feace6f1fb1fa992f5f2b033c8f033e2d2" PeChecksum="0x17726" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="2.4.2.0" BinFileVersion="2.4.2.0" FileDescription="SharpDX.XAudio2" InternalName="SharpDX.XAudio2.dll" LegalCopyright="Copyright © 2010-2012 Alexandre Mutel" LinkerVersion="8.0" LinkDate="12/21/2012 15:00:07" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SharpDX.XAudio2.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\sharpdx.xaudio2.dll" LongPathHash="0000366e9b97a57fabee6c35ac6b8115bc227acb8582" UniqueId="0x16d5" />
+            <File Name="MonoGame.Framework.dll" Id="0000a8141105411f82815366087218fec02e8712cc6b" ProductName="MonoGame.Framework" ProductVersion="3.0.1.0" VerLanguage="0" ShortName="MONOGA~1.DLL" SwitchBackContext="0x0100000000000600" FileVersion="3.0.1.0" Size="0x88800" SizeOfImage="0x8e000" PeHeaderHash="0101c738615d7eeddc5c5e447e0ae1e8b9f73913c0ca" PeChecksum="0x0" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="3.0.1.0" BinFileVersion="3.0.1.0" FileDescription="MonoGame.Framework" InternalName="MonoGame.Framework.dll" LegalCopyright="Copyright © 2011-2013" LinkerVersion="11.0" LinkDate="02/25/2013 16:44:00" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="MonoGame.Framework.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\monogame.framework.dll" LongPathHash="0000a820335fd4cc2071d074f8bc9995d169de7ab5ec" UniqueId="0x16cf" />
+            <File Name="SharpDX.DXGI.dll" Id="0000f4035c124b0885fef2edcc4750263894e2f9300f" ProductName="SharpDX.DXGI" CompanyName="Alexandre Mutel" ProductVersion="2.4.2" VerLanguage="0" ShortName="SHARPD~3.DLL" SwitchBackContext="0x0100000000000400" FileVersion="2.4.2" Size="0x1a200" SizeOfImage="0x20000" PeHeaderHash="0101bd9baa166fd77ed603900912381214524aa72e2f" PeChecksum="0x28b87" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="2.4.2.0" BinFileVersion="2.4.2.0" FileDescription="SharpDX.DXGI" InternalName="SharpDX.DXGI.dll" LegalCopyright="Copyright © 2010-2012 Alexandre Mutel" LinkerVersion="8.0" LinkDate="12/21/2012 14:59:53" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SharpDX.DXGI.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\sharpdx.dxgi.dll" LongPathHash="00001a925590d76f9971a061b5adc3f372f0a90afd6e" UniqueId="0x16d3" />
+            <File Name="SharpDX.Direct2D1.dll" Id="00002991014be13b05920cb6eb03a707ffd5d12dffc6" ProductName="SharpDX.Direct2D1" CompanyName="Alexandre Mutel" ProductVersion="2.4.2" VerLanguage="0" ShortName="SHARPD~1.DLL" SwitchBackContext="0x0100000000000400" FileVersion="2.4.2" Size="0x62e00" SizeOfImage="0x6a000" PeHeaderHash="01015d25f568c4beb6de78c8487583cd5a1fb3a28ee4" PeChecksum="0x678c3" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="2.4.2.0" BinFileVersion="2.4.2.0" FileDescription="SharpDX.Direct2D1" InternalName="SharpDX.Direct2D1.dll" LegalCopyright="Copyright © 2010-2012 Alexandre Mutel" LinkerVersion="8.0" LinkDate="12/21/2012 14:59:55" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SharpDX.Direct2D1.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\sharpdx.direct2d1.dll" LongPathHash="00009011b9c2bf36a298c6200d53d7fd6e79d398afb6" UniqueId="0x16d0" />
+            <File Name="SharpDX.dll" Id="000049e45b59981415ec3dc88d20493606f5c8ff345b" ProductName="SharpDX" CompanyName="Alexandre Mutel" ProductVersion="2.4.2" VerLanguage="0" SwitchBackContext="0x0100000000000400" FileVersion="2.4.2" Size="0x79a00" SizeOfImage="0x80000" PeHeaderHash="01013678d5e35b983999d62f744e8aee80b01560cabf" PeChecksum="0x8410e" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="2.4.2.0" BinFileVersion="2.4.2.0" FileDescription="SharpDX" InternalName="SharpDX.dll" LegalCopyright="Copyright © 2010-2012 Alexandre Mutel" LinkerVersion="8.0" LinkDate="12/21/2012 14:59:49" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SharpDX.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\sharpdx.dll" LongPathHash="0000b90ea1daae8e6f80dbf6bb5f69747108edf9c224" UniqueId="0x16d2" />
+            <File Name="SharpDX.Direct3D11.dll" Id="00006c726801bdce495999b844683aba7079d7d46825" ProductName="SharpDX.Direct3D11" CompanyName="Alexandre Mutel" ProductVersion="2.4.2" VerLanguage="0" ShortName="SHARPD~2.DLL" SwitchBackContext="0x0100000000000400" FileVersion="2.4.2" Size="0x23600" SizeOfImage="0x2a000" PeHeaderHash="0101ca8d57f1618976e1259ee59d81b78411ed1678f5" PeChecksum="0x2a8b1" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="2.4.2.0" BinFileVersion="2.4.2.0" FileDescription="SharpDX.Direct3D11" InternalName="SharpDX.Direct3D11.dll" LegalCopyright="Copyright © 2010-2012 Alexandre Mutel" LinkerVersion="8.0" LinkDate="12/21/2012 14:59:56" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SharpDX.Direct3D11.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\sharpdx.direct3d11.dll" LongPathHash="00008f466cd27b096c37a9f4012f3b6cb67de3ed7c17" UniqueId="0x16d1" />
+            <File Name="SharpDX.XInput.dll" Id="000075eb93e01eb350383aca926d9878a74c66f44f86" ProductName="SharpDX.XInput" CompanyName="Alexandre Mutel" ProductVersion="2.4.2" VerLanguage="0" ShortName="SH7AD0~1.DLL" SwitchBackContext="0x0100000000000400" FileVersion="2.4.2" Size="0x2c00" SizeOfImage="0xa000" PeHeaderHash="010168230cac8db151f9cc95c58c90cb8ee375b4a35b" PeChecksum="0x949c" PeImageType="0x14c" PeSubsystem="3" BinProductVersion="2.4.2.0" BinFileVersion="2.4.2.0" FileDescription="SharpDX.XInput" InternalName="SharpDX.XInput.dll" LegalCopyright="Copyright © 2010-2012 Alexandre Mutel" LinkerVersion="8.0" LinkDate="12/21/2012 15:00:07" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SharpDX.XInput.dll" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\sharpdx.xinput.dll" LongPathHash="00008cb9e99e0075c3dc5ddcef85c89aacb4d6afcae6" UniqueId="0x16d6" />
+            <File Name="SpaceShooter.exe" Id="0000e9a11e3118e820b78bf08c77700c3fda610329b3" ProductName="SpaceShooter" ProductVersion="1.0.0.0" VerLanguage="0" ShortName="SPACES~1.EXE" SwitchBackContext="0x0100000000000602" FileVersion="1.0.0.0" Size="0x7c00" SizeOfImage="0xe000" PeHeaderHash="01014af4fc39c690a7b64e4a24fe8fdb5f329af644d2" PeChecksum="0x0" PeImageType="0x14c" PeSubsystem="2" BinProductVersion="1.0.0.0" BinFileVersion="1.0.0.0" FileDescription="SpaceShooter" InternalName="SpaceShooter.exe" LegalCopyright="Copyright ©  2013" LinkerVersion="11.0" LinkDate="06/28/2013 09:24:40" BinaryType="DOTNET32" Created="06/28/2013 09:30:12" Modified="06/28/2013 09:30:12" OriginalFilename="SpaceShooter.exe" RunLevel="AsInvoker" UiAccess="false" Path="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te" RNP="0x4" DNP="0x5" LowerCaseLongPath="c:\program files\windowsapps\16173lasshi.awesomespacefighter_1.1.0.2_neutral__0q49h5m1n06te\spaceshooter.exe" LongPathHash="00008b920fffcd3730be11c19981385f7e67acaf1f1c" UniqueId="0x16d7" />
+          </Files>
+        </StaticProperties>
+      </Program>
+    </Installed_Programs>
+  </APPLICATIONS>
+  <DEPENDENCY_INFORMATION>
+    <AitStaticAnalysis ProgramId="0000679ba7076ffa57a26b0b8301e37d79e600000904" AnalysisVersion="1.54" DictionaryVersion="1.6" Type="Package" Id="16173lasshi.AwesomeSpaceFighter_1.1.0.2_neutral__0q49h5m1n06te">
+      <AitFile ErrorCode="0" Name="SharpDX.Direct2D1.dll" Id="00002991014be13b05920cb6eb03a707ffd5d12dffc6">
+        <AitCategory Id="DotNetApi">
+          <AitFeature Name="d2d1.dll!D2D1ConvertColorSpace" />
+          <AitFeature Name="d2d1.dll!D2D1CreateDevice" />
+          <AitFeature Name="d2d1.dll!D2D1CreateDeviceContext" />
+          <AitFeature Name="d2d1.dll!D2D1CreateFactory" />
+          <AitFeature Name="d2d1.dll!D2D1InvertMatrix" />
+          <AitFeature Name="d2d1.dll!D2D1IsMatrixInvertible" />
+          <AitFeature Name="d2d1.dll!D2D1MakeRotateMatrix" />
+          <AitFeature Name="d2d1.dll!D2D1MakeSkewMatrix" />
+          <AitFeature Name="d2d1.dll!D2D1SinCos" />
+          <AitFeature Name="d2d1.dll!D2D1Tan" />
+          <AitFeature Name="d2d1.dll!D2D1Vec3Length" />
+          <AitFeature Name="dwrite.dll!DWriteCreateFactory" />
+        </AitCategory>
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="SharpDX.dll" Id="000049e45b59981415ec3dc88d20493606f5c8ff345b">
+        <AitCategory Id="DotNetCom">
+          <AitFeature Name="{22f55882-280b-11d0-a8a9-00a0c90c2004}" />
+        </AitCategory>
+        <AitCategory Id="DotNetApi">
+          <AitFeature Name="ole32.dll!CoCreateInstanceFromApp" />
+          <AitFeature Name="kernel32.dll!CloseHandle" />
+          <AitFeature Name="kernel32.dll!CreateFile2" />
+          <AitFeature Name="kernel32.dll!FlushFileBuffers" />
+          <AitFeature Name="kernel32.dll!FormatMessageW" />
+          <AitFeature Name="kernel32.dll!GetFileInformationByHandleEx" />
+          <AitFeature Name="kernel32.dll!ReadFile" />
+          <AitFeature Name="kernel32.dll!SetEndOfFile" />
+          <AitFeature Name="kernel32.dll!SetFilePointerEx" />
+          <AitFeature Name="kernel32.dll!WriteFile" />
+        </AitCategory>
+        <AitCategory Id="ApiDynamic">
+          <AitFeature Name="kernel32.dll!GetFileSizeEx" />
+          <AitFeature Name="kernel32.dll!GetProcAddress" />
+          <AitFeature Name="kernel32.dll!LoadPackagedLibrary" />
+          <AitFeature Name="kernel32.dll!Sleep" />
+        </AitCategory>
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+        <AitCategory Id="DotNetWinRt">
+          <AitFeature Name="Windows.Storage.Streams.IRandomAccessStream" />
+          <AitFeature Name="Windows.Storage.Streams.InMemoryRandomAccessStream" />
+          <AitFeature Name="Windows.Storage.Streams.InMemoryRandomAccessStream..ctor" />
+          <AitFeature Name="Windows.Storage.Streams.InMemoryRandomAccessStream.Seek" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="SharpDX.MediaFoundation.dll" Id="00005f8101e434ec6b36939349abf3bd69010aed2d78">
+        <AitCategory Id="DotNetCom">
+          <AitFeature Name="{4d645ace-26aa-4688-9be1-df3516990b93}" />
+        </AitCategory>
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+        <AitCategory Id="DotNetApi">
+          <AitFeature Name="mfreadwrite.dll!MFCreateSourceReaderFromByteStream" />
+          <AitFeature Name="mfreadwrite.dll!MFCreateSourceReaderFromMediaSource" />
+          <AitFeature Name="mfreadwrite.dll!MFCreateSourceReaderFromURL" />
+          <AitFeature Name="mf.dll!MFCreateSourceResolver" />
+          <AitFeature Name="mfplat.dll!MFAllocateSerialWorkQueue" />
+          <AitFeature Name="mfplat.dll!MFCancelWorkItem" />
+          <AitFeature Name="mfplat.dll!MFCopyImage" />
+          <AitFeature Name="mfplat.dll!MFCreate2DMediaBuffer" />
+          <AitFeature Name="mfplat.dll!MFCreateAlignedMemoryBuffer" />
+          <AitFeature Name="mfplat.dll!MFCreateAsyncResult" />
+          <AitFeature Name="mfplat.dll!MFCreateAttributes" />
+          <AitFeature Name="mfplat.dll!MFCreateCollection" />
+          <AitFeature Name="mfplat.dll!MFCreateDXGIDeviceManager" />
+          <AitFeature Name="mfplat.dll!MFCreateDXGISurfaceBuffer" />
+          <AitFeature Name="mfplat.dll!MFCreateEventQueue" />
+          <AitFeature Name="mfplat.dll!MFCreateMFByteStreamOnStreamEx" />
+          <AitFeature Name="mfplat.dll!MFCreateMediaBufferFromMediaType" />
+          <AitFeature Name="mfplat.dll!MFCreateMediaBufferWrapper" />
+          <AitFeature Name="mfplat.dll!MFCreateMediaEvent" />
+          <AitFeature Name="mfplat.dll!MFCreateMediaExtensionActivate" />
+          <AitFeature Name="mfplat.dll!MFCreateMediaType" />
+          <AitFeature Name="mfplat.dll!MFCreateMediaTypeFromProperties" />
+          <AitFeature Name="mfplat.dll!MFCreateMemoryBuffer" />
+          <AitFeature Name="mfplat.dll!MFCreatePresentationDescriptor" />
+          <AitFeature Name="mfplat.dll!MFCreatePropertiesFromMediaType" />
+          <AitFeature Name="mfplat.dll!MFCreateSample" />
+          <AitFeature Name="mfplat.dll!MFCreateStreamDescriptor" />
+          <AitFeature Name="mfplat.dll!MFCreateStreamOnMFByteStreamEx" />
+          <AitFeature Name="mfplat.dll!MFCreateTrackedSample" />
+          <AitFeature Name="mfplat.dll!MFCreateVideoSampleAllocatorEx" />
+          <AitFeature Name="mfplat.dll!MFCreateWaveFormatExFromMFMediaType" />
+          <AitFeature Name="mfplat.dll!MFDeserializeAttributesFromStream" />
+          <AitFeature Name="mfplat.dll!MFGetAttributesAsBlob" />
+          <AitFeature Name="mfplat.dll!MFGetAttributesAsBlobSize" />
+          <AitFeature Name="mfplat.dll!MFGetSystemTime" />
+          <AitFeature Name="mfplat.dll!MFInitAttributesFromBlob" />
+          <AitFeature Name="mfplat.dll!MFInitMediaTypeFromWaveFormatEx" />
+          <AitFeature Name="mfplat.dll!MFInvokeCallback" />
+          <AitFeature Name="mfplat.dll!MFLockDXGIDeviceManager" />
+          <AitFeature Name="mfplat.dll!MFLockPlatform" />
+          <AitFeature Name="mfplat.dll!MFLockSharedWorkQueue" />
+          <AitFeature Name="mfplat.dll!MFLockWorkQueue" />
+          <AitFeature Name="mfplat.dll!MFPutWaitingWorkItem" />
+          <AitFeature Name="mfplat.dll!MFPutWorkItem2" />
+          <AitFeature Name="mfplat.dll!MFPutWorkItemEx2" />
+          <AitFeature Name="mfplat.dll!MFSerializeAttributesToStream" />
+          <AitFeature Name="mfplat.dll!MFShutdown" />
+          <AitFeature Name="mfplat.dll!MFStartup" />
+          <AitFeature Name="mfplat.dll!MFUnlockDXGIDeviceManager" />
+          <AitFeature Name="mfplat.dll!MFUnlockPlatform" />
+          <AitFeature Name="mfplat.dll!MFUnlockWorkQueue" />
+          <AitFeature Name="mfplat.dll!MFUnwrapMediaType" />
+          <AitFeature Name="mfplat.dll!MFWrapMediaType" />
+          <AitFeature Name="mfplat.dll!MFllMulDiv" />
+        </AitCategory>
+        <AitCategory Id="ApiDynamic">
+          <AitFeature Name="mfplat.dll!MFCreateSourceResolver" />
+        </AitCategory>
+        <AitCategory Id="DotNetWinRt">
+          <AitFeature Name="Windows.Storage.Streams.IRandomAccessStream" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="SharpDX.Direct3D11.dll" Id="00006c726801bdce495999b844683aba7079d7d46825">
+        <AitCategory Id="DotNetApi">
+          <AitFeature Name="d3d11.dll!D3D11CreateDevice" />
+        </AitCategory>
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="SharpDX.XInput.dll" Id="000075eb93e01eb350383aca926d9878a74c66f44f86">
+        <AitCategory Id="DotNetApi">
+          <AitFeature Name="xinput1_4.dll!XInputEnable" />
+          <AitFeature Name="xinput1_4.dll!XInputGetAudioDeviceIds" />
+          <AitFeature Name="xinput1_4.dll!XInputGetBatteryInformation" />
+          <AitFeature Name="xinput1_4.dll!XInputGetCapabilities" />
+          <AitFeature Name="xinput1_4.dll!XInputGetKeystroke" />
+          <AitFeature Name="xinput1_4.dll!XInputGetState" />
+          <AitFeature Name="xinput1_4.dll!XInputSetState" />
+        </AitCategory>
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="MonoGame.Framework.dll" Id="0000a8141105411f82815366087218fec02e8712cc6b">
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+        <AitCategory Id="DotNetWinRt">
+          <AitFeature Name="Windows.ApplicationModel.Package" />
+          <AitFeature Name="Windows.ApplicationModel.Package.get_Current" />
+          <AitFeature Name="Windows.ApplicationModel.Package.get_Id" />
+          <AitFeature Name="Windows.ApplicationModel.Package.get_InstalledLocation" />
+          <AitFeature Name="Windows.ApplicationModel.PackageId" />
+          <AitFeature Name="Windows.ApplicationModel.PackageId.get_FamilyName" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.ActivationKind" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.ApplicationExecutionState" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.IActivatedEventArgs" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.IActivatedEventArgs.get_Kind" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.LaunchActivatedEventArgs" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.LaunchActivatedEventArgs.get_Arguments" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.LaunchActivatedEventArgs.get_PreviousExecutionState" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.ProtocolActivatedEventArgs" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.ProtocolActivatedEventArgs.get_PreviousExecutionState" />
+          <AitFeature Name="Windows.ApplicationModel.Activation.ProtocolActivatedEventArgs.get_Uri" />
+          <AitFeature Name="Windows.ApplicationModel.Core.CoreApplicationView" />
+          <AitFeature Name="Windows.ApplicationModel.Core.CoreApplicationView.add_Activated" />
+          <AitFeature Name="Windows.ApplicationModel.Core.CoreApplicationView.remove_Activated" />
+          <AitFeature Name="Windows.ApplicationModel.Core.IFrameworkView" />
+          <AitFeature Name="Windows.ApplicationModel.Core.IFrameworkViewSource" />
+          <AitFeature Name="Windows.ApplicationModel.Store.CurrentApp" />
+          <AitFeature Name="Windows.ApplicationModel.Store.CurrentApp.get_LicenseInformation" />
+          <AitFeature Name="Windows.ApplicationModel.Store.LicenseChangedEventHandler" />
+          <AitFeature Name="Windows.ApplicationModel.Store.LicenseChangedEventHandler..ctor" />
+          <AitFeature Name="Windows.ApplicationModel.Store.LicenseInformation" />
+          <AitFeature Name="Windows.ApplicationModel.Store.LicenseInformation.add_LicenseChanged" />
+          <AitFeature Name="Windows.ApplicationModel.Store.LicenseInformation.get_IsActive" />
+          <AitFeature Name="Windows.ApplicationModel.Store.LicenseInformation.get_IsTrial" />
+          <AitFeature Name="Windows.ApplicationModel.Store.LicenseInformation.remove_LicenseChanged" />
+          <AitFeature Name="Windows.Devices.Input.PointerDevice" />
+          <AitFeature Name="Windows.Devices.Input.PointerDevice.GetPointerDevices" />
+          <AitFeature Name="Windows.Devices.Input.PointerDevice.get_MaxContacts" />
+          <AitFeature Name="Windows.Devices.Input.PointerDevice.get_PointerDeviceType" />
+          <AitFeature Name="Windows.Devices.Input.PointerDeviceType" />
+          <AitFeature Name="Windows.Devices.Input.TouchCapabilities" />
+          <AitFeature Name="Windows.Devices.Input.TouchCapabilities..ctor" />
+          <AitFeature Name="Windows.Devices.Input.TouchCapabilities.get_TouchPresent" />
+          <AitFeature Name="Windows.Foundation.IAsyncAction" />
+          <AitFeature Name="Windows.Foundation.IAsyncAction.GetResults" />
+          <AitFeature Name="Windows.Foundation.IAsyncOperation`1" />
+          <AitFeature Name="Windows.Foundation.Point" />
+          <AitFeature Name="Windows.Foundation.Point.get_X" />
+          <AitFeature Name="Windows.Foundation.Point.get_Y" />
+          <AitFeature Name="Windows.Foundation.Rect" />
+          <AitFeature Name="Windows.Foundation.Rect.get_Height" />
+          <AitFeature Name="Windows.Foundation.Rect.get_Width" />
+          <AitFeature Name="Windows.Foundation.Size" />
+          <AitFeature Name="Windows.Foundation.Size.get_Height" />
+          <AitFeature Name="Windows.Foundation.Size.get_Width" />
+          <AitFeature Name="Windows.Foundation.TypedEventHandler`2" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayOrientations" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayProperties" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayProperties.add_OrientationChanged" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayProperties.get_CurrentOrientation" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayProperties.get_LogicalDpi" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayProperties.get_NativeOrientation" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayProperties.put_AutoRotationPreferences" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayProperties.remove_OrientationChanged" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayPropertiesEventHandler" />
+          <AitFeature Name="Windows.Graphics.Display.DisplayPropertiesEventHandler..ctor" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapAlphaMode" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapEncoder" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapEncoder.CreateAsync" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapEncoder.FlushAsync" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapEncoder.SetPixelData" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapEncoder.get_JpegEncoderId" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapEncoder.get_PngEncoderId" />
+          <AitFeature Name="Windows.Graphics.Imaging.BitmapPixelFormat" />
+          <AitFeature Name="Windows.Storage.ApplicationData" />
+          <AitFeature Name="Windows.Storage.ApplicationData.get_Current" />
+          <AitFeature Name="Windows.Storage.ApplicationData.get_LocalFolder" />
+          <AitFeature Name="Windows.Storage.CreationCollisionOption" />
+          <AitFeature Name="Windows.Storage.IStorageFolder" />
+          <AitFeature Name="Windows.Storage.StorageFile" />
+          <AitFeature Name="Windows.Storage.StorageFile.DeleteAsync" />
+          <AitFeature Name="Windows.Storage.StorageFile.OpenReadAsync" />
+          <AitFeature Name="Windows.Storage.StorageFile.get_Name" />
+          <AitFeature Name="Windows.Storage.StorageFolder" />
+          <AitFeature Name="Windows.Storage.StorageFolder.CreateFileQueryWithOptions" />
+          <AitFeature Name="Windows.Storage.StorageFolder.CreateFolderAsync" />
+          <AitFeature Name="Windows.Storage.StorageFolder.DeleteAsync" />
+          <AitFeature Name="Windows.Storage.StorageFolder.GetFileAsync" />
+          <AitFeature Name="Windows.Storage.StorageFolder.GetFilesAsync" />
+          <AitFeature Name="Windows.Storage.StorageFolder.GetFolderAsync" />
+          <AitFeature Name="Windows.Storage.StorageFolder.GetFoldersAsync" />
+          <AitFeature Name="Windows.Storage.StorageFolder.get_Name" />
+          <AitFeature Name="Windows.Storage.StorageFolder.get_Path" />
+          <AitFeature Name="Windows.Storage.Search.CommonFileQuery" />
+          <AitFeature Name="Windows.Storage.Search.QueryOptions" />
+          <AitFeature Name="Windows.Storage.Search.QueryOptions..ctor" />
+          <AitFeature Name="Windows.Storage.Search.StorageFileQueryResult" />
+          <AitFeature Name="Windows.Storage.Search.StorageFileQueryResult.GetFilesAsync" />
+          <AitFeature Name="Windows.Storage.Streams.IInputStream" />
+          <AitFeature Name="Windows.Storage.Streams.IRandomAccessStream" />
+          <AitFeature Name="Windows.Storage.Streams.IRandomAccessStream.get_Size" />
+          <AitFeature Name="Windows.Storage.Streams.IRandomAccessStreamWithContentType" />
+          <AitFeature Name="Windows.Storage.Streams.InMemoryRandomAccessStream" />
+          <AitFeature Name="Windows.Storage.Streams.InMemoryRandomAccessStream..ctor" />
+          <AitFeature Name="Windows.Storage.Streams.InMemoryRandomAccessStream.Seek" />
+          <AitFeature Name="Windows.System.Launcher" />
+          <AitFeature Name="Windows.System.Launcher.LaunchUriAsync" />
+          <AitFeature Name="Windows.System.VirtualKey" />
+          <AitFeature Name="Windows.UI.Core.CoreCursor" />
+          <AitFeature Name="Windows.UI.Core.CoreCursor..ctor" />
+          <AitFeature Name="Windows.UI.Core.CoreCursorType" />
+          <AitFeature Name="Windows.UI.Core.CoreDispatcher" />
+          <AitFeature Name="Windows.UI.Core.CoreDispatcher.ProcessEvents" />
+          <AitFeature Name="Windows.UI.Core.CoreDispatcher.RunAsync" />
+          <AitFeature Name="Windows.UI.Core.CoreDispatcherPriority" />
+          <AitFeature Name="Windows.UI.Core.CorePhysicalKeyStatus" />
+          <AitFeature Name="Windows.UI.Core.CorePhysicalKeyStatus.IsExtendedKey" />
+          <AitFeature Name="Windows.UI.Core.CorePhysicalKeyStatus.ScanCode" />
+          <AitFeature Name="Windows.UI.Core.CoreProcessEventsOption" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.Activate" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.GetForCurrentThread" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_Activated" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_Closed" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_KeyDown" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_KeyUp" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_PointerMoved" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_PointerPressed" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_PointerReleased" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_PointerWheelChanged" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.add_SizeChanged" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.get_Bounds" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.get_Dispatcher" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.put_PointerCursor" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_Activated" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_Closed" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_KeyDown" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_KeyUp" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_PointerMoved" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_PointerPressed" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_PointerReleased" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_PointerWheelChanged" />
+          <AitFeature Name="Windows.UI.Core.CoreWindow.remove_SizeChanged" />
+          <AitFeature Name="Windows.UI.Core.CoreWindowActivationState" />
+          <AitFeature Name="Windows.UI.Core.CoreWindowEventArgs" />
+          <AitFeature Name="Windows.UI.Core.DispatchedHandler" />
+          <AitFeature Name="Windows.UI.Core.DispatchedHandler..ctor" />
+          <AitFeature Name="Windows.UI.Core.KeyEventArgs" />
+          <AitFeature Name="Windows.UI.Core.KeyEventArgs.get_KeyStatus" />
+          <AitFeature Name="Windows.UI.Core.KeyEventArgs.get_VirtualKey" />
+          <AitFeature Name="Windows.UI.Core.PointerEventArgs" />
+          <AitFeature Name="Windows.UI.Core.PointerEventArgs.get_CurrentPoint" />
+          <AitFeature Name="Windows.UI.Core.PointerEventArgs.put_Handled" />
+          <AitFeature Name="Windows.UI.Core.WindowActivatedEventArgs" />
+          <AitFeature Name="Windows.UI.Core.WindowActivatedEventArgs.get_WindowActivationState" />
+          <AitFeature Name="Windows.UI.Core.WindowSizeChangedEventArgs" />
+          <AitFeature Name="Windows.UI.Core.WindowSizeChangedEventArgs.get_Size" />
+          <AitFeature Name="Windows.UI.Input.PointerPoint" />
+          <AitFeature Name="Windows.UI.Input.PointerPoint.get_IsInContact" />
+          <AitFeature Name="Windows.UI.Input.PointerPoint.get_PointerDevice" />
+          <AitFeature Name="Windows.UI.Input.PointerPoint.get_PointerId" />
+          <AitFeature Name="Windows.UI.Input.PointerPoint.get_Position" />
+          <AitFeature Name="Windows.UI.Input.PointerPoint.get_Properties" />
+          <AitFeature Name="Windows.UI.Input.PointerPointProperties" />
+          <AitFeature Name="Windows.UI.Input.PointerPointProperties.get_IsLeftButtonPressed" />
+          <AitFeature Name="Windows.UI.Input.PointerPointProperties.get_IsMiddleButtonPressed" />
+          <AitFeature Name="Windows.UI.Input.PointerPointProperties.get_IsRightButtonPressed" />
+          <AitFeature Name="Windows.UI.Input.PointerPointProperties.get_MouseWheelDelta" />
+          <AitFeature Name="Windows.UI.Popups.IUICommand" />
+          <AitFeature Name="Windows.UI.Popups.IUICommand.get_Id" />
+          <AitFeature Name="Windows.UI.Popups.MessageDialog" />
+          <AitFeature Name="Windows.UI.Popups.MessageDialog..ctor" />
+          <AitFeature Name="Windows.UI.Popups.MessageDialog.ShowAsync" />
+          <AitFeature Name="Windows.UI.Popups.MessageDialog.get_Commands" />
+          <AitFeature Name="Windows.UI.Popups.MessageDialog.put_DefaultCommandIndex" />
+          <AitFeature Name="Windows.UI.Popups.UICommand" />
+          <AitFeature Name="Windows.UI.Popups.UICommand..ctor" />
+          <AitFeature Name="Windows.UI.Popups.UICommandInvokedHandler" />
+          <AitFeature Name="Windows.UI.ViewManagement.ApplicationView" />
+          <AitFeature Name="Windows.UI.ViewManagement.ApplicationView.get_Value" />
+          <AitFeature Name="Windows.UI.ViewManagement.ApplicationViewState" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.CapturePointer" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.ReleasePointerCapture" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.add_PointerMoved" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.add_PointerPressed" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.add_PointerReleased" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.add_PointerWheelChanged" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.remove_PointerMoved" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.remove_PointerPressed" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.remove_PointerReleased" />
+          <AitFeature Name="Windows.UI.Xaml.UIElement.remove_PointerWheelChanged" />
+          <AitFeature Name="Windows.UI.Xaml.Window" />
+          <AitFeature Name="Windows.UI.Xaml.Window.get_CoreWindow" />
+          <AitFeature Name="Windows.UI.Xaml.Window.get_Current" />
+          <AitFeature Name="Windows.UI.Xaml.Controls.SwapChainBackgroundPanel" />
+          <AitFeature Name="Windows.UI.Xaml.Input.Pointer" />
+          <AitFeature Name="Windows.UI.Xaml.Input.PointerEventHandler" />
+          <AitFeature Name="Windows.UI.Xaml.Input.PointerEventHandler..ctor" />
+          <AitFeature Name="Windows.UI.Xaml.Input.PointerRoutedEventArgs" />
+          <AitFeature Name="Windows.UI.Xaml.Input.PointerRoutedEventArgs.GetCurrentPoint" />
+          <AitFeature Name="Windows.UI.Xaml.Input.PointerRoutedEventArgs.get_Pointer" />
+          <AitFeature Name="Windows.UI.Xaml.Input.PointerRoutedEventArgs.put_Handled" />
+          <AitFeature Name="Windows.UI.Xaml.Media.CompositionTarget" />
+          <AitFeature Name="Windows.UI.Xaml.Media.CompositionTarget.add_Rendering" />
+          <AitFeature Name="Windows.UI.Xaml.Media.CompositionTarget.remove_Rendering" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="SpaceShooter.exe" Id="0000e9a11e3118e820b78bf08c77700c3fda610329b3">
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorExeMain" />
+        </AitCategory>
+        <AitCategory Id="DotNetWinRt">
+          <AitFeature Name="Windows.ApplicationModel.Activation.IActivatedEventArgs" />
+          <AitFeature Name="Windows.ApplicationModel.Core.CoreApplication" />
+          <AitFeature Name="Windows.ApplicationModel.Core.CoreApplication.Run" />
+          <AitFeature Name="Windows.ApplicationModel.Core.IFrameworkViewSource" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="SharpDX.XAudio2.dll" Id="0000f258ef4cc44b8a8709c62078c4a4ff6c474df910">
+        <AitCategory Id="DotNetApi">
+          <AitFeature Name="xaudio2_8.dll!CreateAudioReverb" />
+          <AitFeature Name="xaudio2_8.dll!CreateAudioVolumeMeter" />
+          <AitFeature Name="xaudio2_8.dll!CreateFX" />
+          <AitFeature Name="xaudio2_8.dll!X3DAudioCalculate" />
+          <AitFeature Name="xaudio2_8.dll!X3DAudioInitialize" />
+          <AitFeature Name="xaudio2_8.dll!XAudio2Create" />
+        </AitCategory>
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="SharpDX.DXGI.dll" Id="0000f4035c124b0885fef2edcc4750263894e2f9300f">
+        <AitCategory Id="ApiStatic">
+          <AitFeature Name="mscoree.dll!_CorDllMain" />
+        </AitCategory>
+        <AitCategory Id="DotNetApi">
+          <AitFeature Name="dxgi.dll!CreateDXGIFactory1" />
+        </AitCategory>
+      </AitFile>
+    </AitStaticAnalysis>
+  </DEPENDENCY_INFORMATION>
+</REPORT>

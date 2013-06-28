@@ -81,6 +81,11 @@ namespace SpaceShooter
                                     new Vector3(game.joystick_left.position.X, -game.joystick_left.position.Y, 0), angle, turnSpeed);
                 Shoot();
             }
+            else if (game.mouseClicking)
+            {
+                angle = game.LookAt(position,game.mouseInWorld, angle, turnSpeed);
+                Shoot();
+            }
             position.Z = 0;
             healthBar.Update(health);
             if (game.combo < 15){
@@ -106,6 +111,15 @@ namespace SpaceShooter
                     if (0.5 >= (angle - game.LookAt(position, aimSpot, angle, turnSpeed)) && (game.joystick_left.position-game.joystick_left.anchorPos).Length() > 0.8f)
                     {
                         Bullet bullet = new Bullet(position, Vector3.Normalize(new Vector3(game.joystick_left.dir.X, -game.joystick_left.dir.Y, 0)), false, true);
+                        bullet.Initialize(game, angle);
+                        if (bullet != null)
+                            game.bulletArray.Add(bullet);
+                        game.lazer.Play(0.1f, 0, 0);
+                        lastShot = game.time;
+                    }
+                    else if (game.mouseClicking)
+                    {
+                        Bullet bullet = new Bullet(position, Vector3.Normalize(position - game.mouseInWorld), false, true);
                         bullet.Initialize(game, angle);
                         if (bullet != null)
                             game.bulletArray.Add(bullet);
