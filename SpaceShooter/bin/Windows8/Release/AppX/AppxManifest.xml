@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="16173lasshi.AwesomeSpaceFighter" Publisher="CN=7893F764-37AD-4521-B861-DE7E07855527" Version="1.0.0.0" ProcessorArchitecture="neutral" />
+  <Identity Name="16173lasshi.AwesomeSpaceFighter" Publisher="CN=7893F764-37AD-4521-B861-DE7E07855527" Version="1.1.0.2" ProcessorArchitecture="neutral" />
   <Properties>
     <DisplayName>Awesome SpaceFighter</DisplayName>
     <PublisherDisplayName>lasshi</PublisherDisplayName>

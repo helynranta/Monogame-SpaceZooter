@@ -5,28 +5,28 @@
     <WindowsUser>codecamp</WindowsUser>
     <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <RegisteredManifestChecksum>8AD0D1F8C955AD837051FB607CCEC645038F23AC9F31E26BD3AFA294BC15866E</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>16173lasshi.AwesomeSpaceFighter_1.0.0.0_neutral__0q49h5m1n06te</RegisteredPackageMoniker>
+    <RegisteredManifestChecksum>FF292BA060568B055CA222B3CF5F1E6AF9EC44FA0E6E2339A82672B04489FC12</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>16173lasshi.AwesomeSpaceFighter_1.1.0.2_neutral__0q49h5m1n06te</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>16173lasshi.AwesomeSpaceFighter_0q49h5m1n06te!App</RegisteredUserModeAppID>
     <RegisteredPackageID>16173lasshi.AwesomeSpaceFighter</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=7893F764-37AD-4521-B861-DE7E07855527</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <RegisteredVersion>1.1.0.2</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-06-28T07:33:00.053</Modified>
+      <Modified>2013-06-28T09:29:58.767</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\SpaceShooter.exe">
       <PackagePath>SpaceShooter.exe</PackagePath>
-      <Modified>2013-06-28T09:07:53.646</Modified>
+      <Modified>2013-06-28T09:24:40.477</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\SpaceShooter.pdb">
       <PackagePath>SpaceShooter.pdb</PackagePath>
-      <Modified>2013-06-28T09:07:53.624</Modified>
+      <Modified>2013-06-28T09:24:40.456</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\MSBuild\..\MonoGame\v3.0\Assemblies\Windows8\MonoGame.Framework.dll">
       <PackagePath>MonoGame.Framework.dll</PackagePath>
@@ -267,7 +267,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\codecamp\Documents\GitHub\Monogame-SpaceZooter\SpaceShooter\bin\Windows8\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-06-28T07:33:00.000</Modified>
+      <Modified>2013-06-28T09:29:58.721</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
